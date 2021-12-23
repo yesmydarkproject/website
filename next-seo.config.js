@@ -1,13 +1,13 @@
 /** @type {import('next-seo').DefaultSeoProps} */
 const defaultSEOConfig = {
-  title: "nextarter-chakra",
-  titleTemplate: "%s | nextarter-chakra",
-  defaultTitle: "nextarter-chakra",
+  title: "yesmydarkproject-website",
+  titleTemplate: "%s | yesmydarkproject-website",
+  defaultTitle: "yesmydarkproject-website",
   description: "Next.js + chakra-ui + TypeScript template",
   canonical: "https://nextarter-chakra.sznm.dev",
   openGraph: {
     url: "https://nextarter-chakra.sznm.dev",
-    title: "nextarter-chakra",
+    title: "yesmydarkproject-website",
     description: "Next.js + chakra-ui + TypeScript template",
     images: [
       {
@@ -15,7 +15,7 @@ const defaultSEOConfig = {
         alt: "nextarter-chakra.sznm.dev og-image",
       },
     ],
-    site_name: "nextarter-chakra",
+    site_name: "yesmydarkproject-website",
   },
   twitter: {
     handle: "@sozonome",
