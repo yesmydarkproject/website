@@ -1,7 +1,5 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import Link from "next/link";
-
-import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   return (
@@ -9,10 +7,6 @@ const Header = () => {
       <Heading as="h1" size="md">
         <Link href="/">yesmydarkproject-website</Link>
       </Heading>
-
-      <Box marginLeft="auto">
-        <ThemeToggle />
-      </Box>
     </Flex>
   );
 };

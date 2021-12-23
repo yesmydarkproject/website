@@ -2,11 +2,11 @@ import { Flex, Link, Text } from "@chakra-ui/react";
 
 const Footer = () => {
   return (
-    <Flex as="footer" width="full" align="center">
+    <Flex as="footer" width="full" align="center" justify="center" pb={2}>
       <Text>
-        {new Date().getFullYear()} -{" "}
-        <Link href="https://sznm.dev" isExternal>
-          sznm.dev
+        &copy;&ensp;2021&ensp;YesMyDark Project&ensp;&ndash;&ensp;
+        <Link href="https://github.com/yesmydarkproject/website" isExternal>
+          GitHub
         </Link>
       </Text>
     </Flex>
