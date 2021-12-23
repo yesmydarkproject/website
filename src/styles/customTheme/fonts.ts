@@ -1,8 +1,8 @@
 import { DeepPartial, Theme } from "@chakra-ui/react";
 
 const fonts: DeepPartial<Theme["fonts"]> = {
-  body: "Lexend, sans-serif",
-  heading: "Lexend, serif",
+  body: "'IBM Plex Sans JP', sans-serif",
+  heading: "'IBM Plex Sans JP', sans-serif",
 };
 
 export default fonts;

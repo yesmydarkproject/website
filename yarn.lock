@@ -1753,11 +1753,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/lexend@^4.5.1":
-  version "4.5.1"
-  resolved "https://registry.npmjs.org/@fontsource/lexend/-/lexend-4.5.1.tgz"
-  integrity sha512-opFE25zKj2vo978f+QWgID9K4qMsPE6S59RRuwOcyuVL0pBbTErYUVWxfHn8kgDGyy99w+vwxoKI2hGqCHeN2g==
-
 "@hapi/accept@5.0.2":
   version "5.0.2"
   resolved "https://registry.npmjs.org/@hapi/accept/-/accept-5.0.2.tgz"
