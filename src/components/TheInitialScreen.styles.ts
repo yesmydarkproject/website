@@ -52,7 +52,7 @@ export const YesMyDarkButton = styled.button<{
   hovered: string;
 }>`
   position: fixed;
-  top: 64%;
+  top: 62%;
   left: 50%;
   transform: translate(-50%, -50%) scaleX(0.9);
   padding: 0.3em 1.2em;
@@ -88,4 +88,12 @@ export const YesMyDarkButton = styled.button<{
   &:hover {
     color: ${(props) => props.hovered};
   }
+`;
+
+export const ImageOuter = styled.div`
+  position: fixed;
+  top: 100%;
+  left: 50%;
+  width: 40vw;
+  transform: translate(-50%, -76%);
 `;
