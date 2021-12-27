@@ -8,12 +8,14 @@ export function getShadowString(
   yOffsetScale: number
 ) {
   const totalLength = length;
-  let result = `${color1.toString()} 0px 0px`;
+  const results: string[] = [];
   for (let i = length; i > 0; i -= 1) {
     const mixAmount = 100 - (i / totalLength) * 100;
     const mixedColor = mixColors(color1, color2, mixAmount);
-    const offsets = `${i * xOffsetScale}px ${i * yOffsetScale}px`;
-    result = `${mixedColor} ${offsets}, ${result}`;
+    const x = Math.round(i * xOffsetScale * 10) / 10;
+    const y = Math.round(i * yOffsetScale * 10) / 10;
+    results.push(`${mixedColor} ${x}px ${y}px`);
   }
-  return result;
+
+  return `${color1.toString()} 0px 0px, ${results.reverse().join(", ")}`;
 }
