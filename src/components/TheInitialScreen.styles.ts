@@ -2,7 +2,7 @@ import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 const backgroundAnimation = keyframes`
- 0% {
+  0% {
     background-position: 0% 50%;
   }
   50% {
