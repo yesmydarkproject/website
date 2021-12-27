@@ -46,6 +46,7 @@ export const ImageStandingOuter = styled.div`
   height: 123.59vw;
   left: 38.49vw;
   top: -16.09vw;
+  user-select: none;
 `;
 
 export const BlackBar1 = styled.div`
@@ -127,4 +128,32 @@ export const TextLaplusNameLine2 = styled.span`
   display: block;
   font-size: 230%;
   line-height: 91%;
+`;
+
+export const TextWebsiteTitleOuter = styled.p`
+  ${textCommonStyles}
+  font-size: 2.6vw;
+  line-height: 110%;
+  /* top: 186px;
+  left: 100px; */
+  top: 5.45vw;
+  left: 7.55vw;
+  // prettier-ignore
+  transform: matrix3d(1, 0.172, 0, 0.0002, -0.15, 0.9, 0, -0.0004, 0, 0, 1, 0, 0, 0, 0, 1);
+`;
+
+export const TextWebsiteTitleLine1 = styled.span`
+  display: block;
+`;
+export const TextWebsiteTitleLine2 = styled.span`
+  display: block;
+  font-size: 200%;
+  line-height: 100%;
+  padding-left: 8vw;
+`;
+
+export const TextWebsiteTitleLine2Red = styled.span`
+  font-size: 150%;
+  line-height: 110%;
+  color: #e8004e;
 `;
