@@ -36,6 +36,26 @@ interface NavItem {
 
 const MotionedTextLaplusTitle = motion(TextLaplusTitle);
 const MotionedTextWebsiteTitleOuter = motion(TextWebsiteTitleOuter);
+const NavLink = ({ href, text }: Pick<NavItem, "text" | "href">) => (
+  <NextLink href={href} passHref>
+    <ChakraLink
+      fontWeight={700}
+      fontSize="max(4vw, 1.1rem)"
+      lineHeight="100%"
+      transition="0.2s text-shadow"
+      _focus={{
+        textShadow:
+          "0 -0.03125em 0.125em rgba(168, 114, 221, 0.8), 0 -0.015625em 0.0625em rgba(168, 114, 221, 0.4)",
+      }}
+      _hover={{
+        textShadow:
+          "0 -0.03125em 0.46em rgba(168, 114, 221, 0.8), 0 -0.015625em 0.0625em rgba(168, 114, 221, 0.4)",
+      }}
+    >
+      {text}
+    </ChakraLink>
+  </NextLink>
+);
 
 const Home = () => {
   const clipVariants = {
@@ -132,24 +152,7 @@ const Home = () => {
                     key={item.text}
                     margin="max(0.2rem, calc(1.35vw - 5px)) 1.8vw"
                   >
-                    <NextLink href={item.href} passHref>
-                      <ChakraLink
-                        fontWeight={700}
-                        fontSize="max(4vw, 1.1rem)"
-                        lineHeight="100%"
-                        transition="0.2s text-shadow"
-                        _focus={{
-                          textShadow:
-                            "0 -0.03125em 0.125em rgba(168, 114, 221, 0.8), 0 -0.015625em 0.0625em rgba(168, 114, 221, 0.4)",
-                        }}
-                        _hover={{
-                          textShadow:
-                            "0 -0.03125em 0.46em rgba(168, 114, 221, 0.8), 0 -0.015625em 0.0625em rgba(168, 114, 221, 0.4)",
-                        }}
-                      >
-                        {item.text}
-                      </ChakraLink>
-                    </NextLink>
+                    <NavLink {...item} />
                   </Box>
                 ))}
               </Flex>
