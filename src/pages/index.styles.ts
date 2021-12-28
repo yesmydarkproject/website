@@ -140,6 +140,7 @@ export const TextWebsiteTitleOuter = styled.p`
   left: 7.55vw;
   // prettier-ignore
   transform: matrix3d(1, 0.172, 0, 0.0002, -0.15, 0.9, 0, -0.0004, 0, 0, 1, 0, 0, 0, 0, 1);
+  z-index: 100;
 `;
 
 export const TextWebsiteTitleLine1 = styled.span`
