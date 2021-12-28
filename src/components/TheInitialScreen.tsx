@@ -14,7 +14,11 @@ import {
   ImageOuter,
 } from "./TheInitialScreen.styles";
 
-const TheInitialScreen = () => {
+interface Props {
+  onAnimationCompleted(): void;
+}
+
+const TheInitialScreen = ({ onAnimationCompleted }: Props) => {
   const [animated, setAnimated] = useState(false);
   const [shown, setShown] = useState(true);
   const sceneChangeRef = useRef({} as LaplusLiquidSceneChangeHandler);
@@ -40,10 +44,8 @@ const TheInitialScreen = () => {
               sceneChangeRef.current?.animate();
               setTimeout(() => {
                 setShown(false);
-              }, 1210);
-              setTimeout(() => {
                 setAnimated(true);
-              }, 1300);
+              }, 1200);
             }}
           >
             Yes My Dark !!
@@ -56,7 +58,8 @@ const TheInitialScreen = () => {
             key="change"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 1 }}
+            onAnimationComplete={() => onAnimationCompleted()}
           >
             <LaplusLiquidSceneChange ref={sceneChangeRef} />
           </motion.div>

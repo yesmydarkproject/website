@@ -2,10 +2,11 @@ import { Box, Link as ChakraLink, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import NextLink from "next/link";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 
 import standing01 from "../../public/laplus/standing01.png";
 import Footer from "components/layout/Footer";
+import TheInitialScreen from "components/TheInitialScreen";
 
 import {
   PageContainer,
@@ -26,7 +27,6 @@ import {
 } from "./index.styles";
 
 // import Header from "components/layout/Header";
-// import TheInitialScreen from "components/TheInitialScreen";
 
 interface NavItem {
   text: string;
@@ -81,12 +81,6 @@ const Home = () => {
     { text: "+mate ARTS", href: "/", group: "FUN" },
     { text: "+mate LINKS", href: "/", group: "FUN" },
   ];
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShowWebsiteTitle(true);
-    }, 2000);
-  });
 
   return (
     <>
@@ -167,7 +161,13 @@ const Home = () => {
         </Box>
         <Footer />
       </Box>
-      {/* <TheInitialScreen /> */}
+      <TheInitialScreen
+        onAnimationCompleted={() => {
+          setTimeout(() => {
+            setShowWebsiteTitle(true);
+          }, 1200);
+        }}
+      />
     </>
   );
 };
