@@ -7,7 +7,6 @@ import { ReactElement, useState } from "react";
 import standing01 from "../../public/laplus/standing01.png";
 import Footer from "components/layout/Footer";
 import TheInitialScreen from "components/TheInitialScreen";
-
 import {
   PageContainer,
   AboveTheFoldContainer,
@@ -24,7 +23,7 @@ import {
   TextWebsiteTitleLine2,
   TextWebsiteTitleLine2Red,
   BlackBarBehindMenu,
-} from "./index.styles";
+} from "styles/pages/index.styles";
 
 // import Header from "components/layout/Header";
 
