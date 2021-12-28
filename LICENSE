@@ -1,6 +1,23 @@
+COPYRIGHT NOTICES
+
+This project contains the materials (including but not limited to
+illustrations, movies, and text) from COVER corp. and from any other third
+parties (i.e. anyone out of YesMyDark Project contributors), which may not be
+licensed with MIT License.
+
+The ones from COVER corp. are copyrighted to them and in most cases are not
+licensed with MIT License nor any other open licenses.
+
+The others are also copyrighted to their creators, and currently none of them
+are licensed with MIT License nor any other open licenses.
+
+--------------
+
+Note that the license is only applied to the code.
+
 MIT License
 
-Copyright (c) 2020 Agustinus Nathaniel
+Copyright (c) 2021 YesMyDark Project contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +36,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+--------------
+
+[sozonome/nextarter-chakra](https://github.com/sozonome/nextarter-chakra)
+  Licensed with MIT by Agustinus Nathaniel
