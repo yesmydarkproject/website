@@ -29,7 +29,7 @@ export const PageContainer = styled.div`
   /* position: fixed;
   top: 0;
   left: 0; */
-  width: 100vw;
+  width: 100%;
   margin: 0 auto;
   background: linear-gradient(173deg, #4c3494 0%, #4c3b59 80%, #e2dde9 100%);
   background-size: 150% 150%;
@@ -55,7 +55,7 @@ export const BlackBar1 = styled.div`
   /* z-index: 100; */
   position: absolute;
   height: 45.57vw;
-  width: 100vw;
+  width: 100%;
   margin: 0;
   top: 0px;
   left: 0px;
@@ -68,7 +68,7 @@ export const BlackBar2 = styled.div`
   /* z-index: 100; */
   position: absolute;
   height: 45.57vw;
-  width: 100vw;
+  width: 100%;
   margin: 0;
   top: 0px;
   left: 0px;
@@ -105,7 +105,7 @@ export const TextLaplusNameOuter = styled.p`
   ${textCommonStyles}
   font-size: 4.4vw;
   bottom: 2.2vw;
-  right: 5.2vw;
+  right: 3vw;
   text-align: right;
   // prettier-ignore
   transform: matrix3d(0.8, -0.05, 0, -0.0002, 0, 1, 0, -0.0005, 0, 0, 1, 0, 0, 0, 0, 1);
@@ -156,4 +156,17 @@ export const TextWebsiteTitleLine2Red = styled.span`
   font-size: 150%;
   line-height: 110%;
   color: #e8004e;
+`;
+
+export const BlackBarBehindMenu = styled.div`
+  background: rgb(14 14 14 / 99.4%);
+  /* opacity: 0.5; */
+  /* z-index: 100; */
+  position: absolute;
+  height: 45.57vw;
+  width: 100%;
+  margin: 0;
+  top: 0px;
+  left: 0px;
+  clip-path: polygon(0% 75%, 100% 56%, 100% 100%, 0% 100%);
 `;
