@@ -173,7 +173,7 @@ const Home = () => {
 };
 
 Home.getLayout = function getLayout(page: ReactElement) {
-  return <PageContainer /* transition="0.5s ease-out" */>{page}</PageContainer>;
+  return <PageContainer>{page}</PageContainer>;
 };
 
 export default Home;

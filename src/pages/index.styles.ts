@@ -26,18 +26,12 @@ const backgroundAnimation = keyframes`
 `;
 
 export const PageContainer = styled.div`
-  /* position: fixed;
-  top: 0;
-  left: 0; */
   width: 100%;
   margin: 0 auto;
   background: linear-gradient(173deg, #4c3494 0%, #4c3b59 80%, #e2dde9 100%);
   background-size: 150% 150%;
   animation: ${backgroundAnimation} 26s ease infinite;
   color: white;
-  /* z-index: 2000;
-  min-height: 100vh;
-  min-height: calc(var(--vh, 1vh) * 100); */
 `;
 
 export const ImageStandingOuter = styled.div`
@@ -51,8 +45,6 @@ export const ImageStandingOuter = styled.div`
 
 export const BlackBar1 = styled.div`
   background: #0e0e0e;
-  /* opacity: 0.5; */
-  /* z-index: 100; */
   position: absolute;
   height: 45.57vw;
   width: 100%;
@@ -64,8 +56,6 @@ export const BlackBar1 = styled.div`
 
 export const BlackBar2 = styled.div`
   background: #0e0e0e;
-  /* opacity: 0.5; */
-  /* z-index: 100; */
   position: absolute;
   height: 45.57vw;
   width: 100%;
@@ -87,8 +77,6 @@ const textCommonStyles = `
 
 export const TextLaplusTitle = styled.p`
   ${textCommonStyles}
-  // background: #0a0a0a;
-  // z-index: 100;
   font-size: 5.5vw;
   top: 7.55vw;
   left: 7.55vw;
@@ -134,8 +122,6 @@ export const TextWebsiteTitleOuter = styled.p`
   ${textCommonStyles}
   font-size: 2.6vw;
   line-height: 110%;
-  /* top: 186px;
-  left: 100px; */
   top: 5.45vw;
   left: 7.55vw;
   // prettier-ignore
@@ -161,8 +147,6 @@ export const TextWebsiteTitleLine2Red = styled.span`
 
 export const BlackBarBehindMenu = styled.div`
   background: rgb(14 14 14 / 95%);
-  /* opacity: 0.5; */
-  /* z-index: 100; */
   position: absolute;
   height: 45.57vw;
   width: 100%;
