@@ -36,6 +36,8 @@ interface NavItem {
 
 const MotionedTextLaplusTitle = motion(TextLaplusTitle);
 const MotionedTextWebsiteTitleOuter = motion(TextWebsiteTitleOuter);
+const MotionedTextLaplusNameOuter = motion(TextLaplusNameOuter);
+
 const NavLink = ({ href, text }: Pick<NavItem, "text" | "href">) => (
   <NextLink href={href} passHref>
     <ChakraLink
@@ -126,10 +128,14 @@ const Home = () => {
               </TextWebsiteTitleLine2>
             </MotionedTextWebsiteTitleOuter>
 
-            <TextLaplusNameOuter>
+            <MotionedTextLaplusNameOuter
+              initial={{ opacity: 1 }}
+              animate={{ opacity: showWebsiteTitle ? 0.3 : 1 }}
+              transition={{ duration: 0.3, ease: "circOut", delay: 0.32 }}
+            >
               <TextLaplusNameLine1>La+ Darknesss</TextLaplusNameLine1>
               <TextLaplusNameLine2>ラプラス・ダークネス</TextLaplusNameLine2>
-            </TextLaplusNameOuter>
+            </MotionedTextLaplusNameOuter>
             <motion.div
               style={{ height: "100%", width: "100%" }}
               initial="clipToLeft"

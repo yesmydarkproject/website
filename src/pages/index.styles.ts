@@ -159,7 +159,7 @@ export const TextWebsiteTitleLine2Red = styled.span`
 `;
 
 export const BlackBarBehindMenu = styled.div`
-  background: rgb(14 14 14 / 99.4%);
+  background: rgb(14 14 14 / 95%);
   /* opacity: 0.5; */
   /* z-index: 100; */
   position: absolute;
