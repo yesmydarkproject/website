@@ -11,7 +11,7 @@ import * as React from "react";
 
 import createEmotionCache from "styles/createEmotionCache";
 
-const APP_NAME = "yesmydarkproject-website";
+const APP_NAME = "ラプラス・ダークネス 非公式ファンサイト";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

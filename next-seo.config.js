@@ -1,24 +1,31 @@
 /** @type {import('next-seo').DefaultSeoProps} */
 const defaultSEOConfig = {
-  title: "yesmydarkproject-website",
-  titleTemplate: "%s | yesmydarkproject-website",
-  defaultTitle: "yesmydarkproject-website",
-  description: "Next.js + chakra-ui + TypeScript template",
-  canonical: "https://nextarter-chakra.sznm.dev",
+  title: "ラプラス・ダークネス 非公式ファンサイト",
+  titleTemplate: "%s | ラプラス・ダークネス 非公式ファンサイト",
+  defaultTitle: "ラプラス・ダークネス 非公式ファンサイト",
+  description:
+    "「刮目せよ！ 吾輩の名前は……ラプラス・ダークネスだ！！」 ホロライブ6期生／秘密結社holoX総帥 ラプラス・ダークネスの非公式ファンサイト。 Yes My Dark!!",
+  canonical: "https://yesmydark.com",
   openGraph: {
-    url: "https://nextarter-chakra.sznm.dev",
-    title: "yesmydarkproject-website",
-    description: "Next.js + chakra-ui + TypeScript template",
+    url: "https://yesmydark.com",
+    title: "ラプラス・ダークネス 非公式ファンサイト",
+    description:
+      "「刮目せよ！ 吾輩の名前は……ラプラス・ダークネスだ！！」 ホロライブ6期生／秘密結社holoX総帥 ラプラス・ダークネスの非公式ファンサイト。 Yes My Dark!!",
     images: [
       {
-        url: "https://og-image.sznm.dev/**nextarter-chakra**.sznm.dev.png?theme=dark&md=1&fontSize=125px&images=https%3A%2F%2Fsznm.dev%2Favataaars.svg&widths=250",
-        alt: "nextarter-chakra.sznm.dev og-image",
+        url: "https://yesmydark.com/ogp1b.png",
+        alt: "ラプラス・ダークネス 非公式ファンサイト OGP",
+        width: 1200,
+        height: 630,
+        type: "image/png",
       },
     ],
-    site_name: "yesmydarkproject-website",
+    site_name: "ラプラス・ダークネス 非公式ファンサイト",
+    type: "website",
+    locale: "ja",
   },
   twitter: {
-    handle: "@sozonome",
+    // handle: "",
     cardType: "summary_large_image",
   },
 };
