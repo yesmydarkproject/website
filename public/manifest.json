@@ -3,10 +3,14 @@
   "name": "Next.js App Template",
   "lang": "en",
   "start_url": "/",
-  "background_color": "#FFFFFF",
-  "theme_color": "#FFFFFF",
+  "background_color": "#32243e",
+  "theme_color": "#32243e",
   "dir": "ltr",
   "display": "standalone",
   "orientation": "portrait",
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "icons": [
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
 }
