@@ -7,6 +7,7 @@ import { ReactElement, useState } from "react";
 import standing01 from "../../public/laplus/standing01.png";
 import Footer from "components/layout/Footer";
 import TheInitialScreen from "components/TheInitialScreen";
+import { NavItem, navItems } from "shared/libs/menu";
 import {
   PageContainer,
   AboveTheFoldContainer,
@@ -24,14 +25,7 @@ import {
   TextWebsiteTitleLine2Red,
   BlackBarBehindMenu,
 } from "styles/pages/index.styles";
-
 // import Header from "components/layout/Header";
-
-interface NavItem {
-  text: string;
-  href: string;
-  group: "OFFICIAL" | "FUN";
-}
 
 const MotionedTextLaplusTitle = motion(TextLaplusTitle);
 const MotionedTextWebsiteTitleOuter = motion(TextWebsiteTitleOuter);
@@ -72,18 +66,15 @@ const Home = () => {
   };
   const [showWebsiteTitle, setShowWebsiteTitle] = useState(false);
 
-  const navItems: NavItem[] = [
-    { text: "La+Profile", href: "/", group: "OFFICIAL" },
-    { text: "La+News", href: "/", group: "OFFICIAL" },
-    { text: "La+Archives", href: "/", group: "OFFICIAL" },
-    { text: "La+Works", href: "/", group: "OFFICIAL" },
-    { text: "+mate ARTS", href: "/", group: "FUN" },
-    { text: "+mate LINKS", href: "/", group: "FUN" },
-  ];
-
   return (
     <>
-      <Box>
+      <div className="fullHeight">
+        <style jsx>{`
+          .fullHeight {
+            min-height: 100vh;
+            min-height: calc(var(--vh, 1vh) * 100);
+          }
+        `}</style>
         {/* <Header /> */}
         <Box as="main">
           <AboveTheFoldContainer>
@@ -159,7 +150,7 @@ const Home = () => {
           </AboveTheFoldContainer>
         </Box>
         <Footer />
-      </Box>
+      </div>
       <TheInitialScreen
         onAnimationCompleted={() => {
           setTimeout(() => {
