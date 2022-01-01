@@ -103,9 +103,7 @@ const MobileMenu = ({
         </VStack>
       </MobileMenuContainer>
     </>
-  ) : (
-    <></>
-  );
+  ) : null;
 };
 
 export default MobileMenu;

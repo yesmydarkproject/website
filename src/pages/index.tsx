@@ -2,12 +2,13 @@ import { Box, Link as ChakraLink, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import NextLink from "next/link";
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
 import standing01 from "../../public/laplus/standing01.png";
 import Footer from "components/layout/Footer";
 import TheInitialScreen from "components/TheInitialScreen";
 import { NavItem, navItems } from "shared/libs/menu";
+import useStorage from "shared/libs/useStorage";
 import {
   PageContainer,
   AboveTheFoldContainer,
@@ -64,7 +65,23 @@ const Home = () => {
       clipPath: "polygon(0% -50%, 0% -50%, 0% 150%, 0% 150%)",
     },
   };
+  const { getItem } = useStorage();
   const [showWebsiteTitle, setShowWebsiteTitle] = useState(false);
+
+  const canSkipInitialScreen =
+    getItem("skipInitialScreen", "session") === "true";
+
+  const registerAnimation = () => {
+    setTimeout(() => {
+      setShowWebsiteTitle(true);
+    }, 1200);
+  };
+
+  useEffect(() => {
+    if (canSkipInitialScreen && !showWebsiteTitle) {
+      registerAnimation();
+    }
+  });
 
   return (
     <>
@@ -152,10 +169,9 @@ const Home = () => {
         <Footer />
       </div>
       <TheInitialScreen
+        initialShown={!canSkipInitialScreen}
         onAnimationCompleted={() => {
-          setTimeout(() => {
-            setShowWebsiteTitle(true);
-          }, 1200);
+          registerAnimation();
         }}
       />
     </>
