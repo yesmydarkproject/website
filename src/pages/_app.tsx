@@ -11,6 +11,7 @@ import type { ReactElement, ReactNode } from "react";
 
 import defaultSEOConfig from "../../next-seo.config";
 import Layout from "components/layout";
+import { GoogleAnalyticsScripts } from "shared/libs/gtag";
 import createEmotionCache from "styles/createEmotionCache";
 import customTheme from "styles/customTheme";
 import "styles/globals.css";
@@ -58,6 +59,7 @@ const MyApp = ({
           />
         </Head>
         <DefaultSeo {...defaultSEOConfig} />
+        <GoogleAnalyticsScripts />
         {getLayout(<Component {...pageProps} />)}
       </ChakraProvider>
     </CacheProvider>
