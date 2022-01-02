@@ -71,9 +71,11 @@ const MyApp = ({
     setHeight();
 
     const setScrollBarWidth = () => {
+      const w = window.innerWidth - document.body.clientWidth;
+
       document.documentElement.style.setProperty(
         "--scrollbar-width",
-        `${window.innerWidth - document.body.clientWidth}px`
+        `${w > 0 ? w : 17}px`
       );
     };
     window.addEventListener("resize", setScrollBarWidth);
