@@ -1,4 +1,9 @@
-import { Box, Link as ChakraLink, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Link as ChakraLink,
+  Flex,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -6,6 +11,7 @@ import { ReactElement, useEffect, useState } from "react";
 
 import standing01 from "../../public/laplus/standing01.png";
 import Footer from "components/layout/Footer";
+import Header from "components/layout/Header";
 import TheInitialScreen from "components/TheInitialScreen";
 import { NavItem, navItems } from "shared/libs/menu";
 import useStorage from "shared/libs/useStorage";
@@ -26,7 +32,6 @@ import {
   TextWebsiteTitleLine2Red,
   BlackBarBehindMenu,
 } from "styles/pages/index.styles";
-// import Header from "components/layout/Header";
 
 const MotionedTextLaplusTitle = motion(TextLaplusTitle);
 const MotionedTextWebsiteTitleOuter = motion(TextWebsiteTitleOuter);
@@ -67,6 +72,7 @@ const Home = () => {
   };
   const { getItem } = useStorage();
   const [showWebsiteTitle, setShowWebsiteTitle] = useState(false);
+  const showMobileNav = useBreakpointValue({ base: true, md: false });
 
   const canSkipInitialScreen =
     getItem("skipInitialScreen", "session") === "true";
@@ -92,8 +98,8 @@ const Home = () => {
             min-height: calc(var(--vh, 1vh) * 100);
           }
         `}</style>
-        {/* <Header /> */}
-        <Box as="main">
+        {showMobileNav && <Header />}
+        <Box as="main" paddingTop={showMobileNav ? "4rem" : undefined}>
           <AboveTheFoldContainer>
             <BlackBar1 />
             <BlackBar2 />
