@@ -2,16 +2,16 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { EmotionCache } from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
-import { AnimatePresence, domAnimation, LazyMotion, m } from "framer-motion";
 import type { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect /* useRef, useState */ } from "react";
 import type { ReactElement, ReactNode } from "react";
 
 import defaultSEOConfig from "../../next-seo.config";
 import Layout from "components/layout";
+import { PageTransition } from "components/pageTransition";
 import { GoogleAnalyticsScripts } from "shared/libs/gtag";
 import createEmotionCache from "styles/createEmotionCache";
 import customTheme from "styles/customTheme";
@@ -28,39 +28,21 @@ interface MyAppProps extends AppProps {
   Component: MyNextPage;
 }
 
-const clipVariants = {
-  visible: {
-    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-    transition: { delay: 0.4, duration: 0.7, ease: "easeOut" },
-  },
-  clipToTop: {
-    clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-    transition: { delay: 0, duration: 0.5, ease: "easeIn" },
-  },
-  clipToBottom: {
-    clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-  },
-};
-
 const MyApp = ({
-  Component,
-  pageProps,
+  Component: SsrComponent,
+  pageProps: ssrPageProps,
   emotionCache = clientSideEmotionCache,
 }: MyAppProps) => {
-  const getLayout =
-    Component.getLayout ??
+  const getLayout = (
+    Component: MyAppProps["Component"],
+    pageProps: MyAppProps["pageProps"]
+  ) =>
+    Component?.getLayout ??
     (() => (
       <Layout>
         <Component {...pageProps} />
       </Layout>
     ));
-
-  const [transiting, setTransiting] = useState({} as Record<string, boolean>);
-  const setTransitingByName = (key: string | undefined, value: boolean) =>
-    setTransiting((prev) => ({ ...prev, [key || "0"]: value }));
-  const isTransiting = (key: string | undefined) => transiting[key || "0"];
-  const someTransiting = () =>
-    Object.values(transiting).some((t) => t === true);
 
   useEffect(() => {
     const setHeight = () => {
@@ -70,20 +52,15 @@ const MyApp = ({
     window.addEventListener("resize", setHeight);
     setHeight();
 
-    const setScrollBarWidth = () => {
+    const setScrollBarWidth = setInterval(() => {
       const w = window.innerWidth - document.body.clientWidth;
-
-      document.documentElement.style.setProperty(
-        "--scrollbar-width",
-        `${w > 0 ? w : 17}px`
-      );
-    };
-    window.addEventListener("resize", setScrollBarWidth);
-    setScrollBarWidth();
+      document.documentElement.style.setProperty("--scrollbar-width", `${w}px`);
+    }, 100);
 
     return () => {
       window.removeEventListener("resize", setHeight);
-      window.removeEventListener("resize", setScrollBarWidth);
+
+      clearInterval(setScrollBarWidth);
     };
   }, []);
 
@@ -98,48 +75,21 @@ const MyApp = ({
         </Head>
         <DefaultSeo {...defaultSEOConfig} />
         <GoogleAnalyticsScripts />
-        <div
-          style={{
-            background: "black",
-            width: "100%",
-            height: someTransiting() ? "100vh" : "auto",
-            overflowY: someTransiting() ? "hidden" : "unset",
-            paddingRight: someTransiting() ? "var(--scrollbar-width)" : "0",
+        <PageTransition>
+          {(args) => {
+            if (args && args.Component) {
+              const { Component, pageProps } = args;
+              return getLayout(
+                Component,
+                pageProps
+              )(<Component {...pageProps} />);
+            }
+            return getLayout(
+              SsrComponent,
+              ssrPageProps
+            )(<SsrComponent {...ssrPageProps} />);
           }}
-        >
-          <LazyMotion features={domAnimation}>
-            <AnimatePresence initial={false}>
-              <m.div
-                style={{
-                  position: isTransiting(Component.displayName)
-                    ? "fixed"
-                    : "static",
-                  top: 0,
-                  left: 0,
-                  width: isTransiting(Component.displayName)
-                    ? "calc(100% - var(--scrollbar-width))"
-                    : "100%",
-                  height: isTransiting(Component.displayName)
-                    ? "100vh"
-                    : "auto",
-                }}
-                key={Component.displayName}
-                initial="clipToBottom"
-                animate="visible"
-                exit="clipToTop"
-                variants={clipVariants}
-                onAnimationStart={() => {
-                  setTransitingByName(Component.displayName, true);
-                }}
-                onAnimationComplete={() => {
-                  setTransitingByName(Component.displayName, false);
-                }}
-              >
-                {getLayout(<Component {...pageProps} />)}
-              </m.div>
-            </AnimatePresence>
-          </LazyMotion>
-        </div>
+        </PageTransition>
       </ChakraProvider>
     </CacheProvider>
   );

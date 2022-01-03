@@ -182,6 +182,4 @@ Home.getLayout = function getLayout(page: ReactElement) {
   return <PageContainer>{page}</PageContainer>;
 };
 
-Home.displayName = "index";
-
 export default Home;
