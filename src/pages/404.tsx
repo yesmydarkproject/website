@@ -2,47 +2,47 @@ import {
   Box,
   Button,
   Heading,
-  Image,
+  Center,
   Text,
   Link as ChakraLink,
-  useColorMode,
 } from "@chakra-ui/react";
+import styled from "@emotion/styled";
 import Link from "next/link";
 
-import MotionBox from "components/motion/Box";
+const Video = styled.video``;
+
+const primary = "#CEBDFF";
+const onPrimary = "#361A7D";
 
 const Page404 = () => {
-  const { colorMode } = useColorMode();
-
   return (
     <>
-      <MotionBox
-        animate={{ y: 20 }}
-        transition={{ repeat: Infinity, duration: 2, repeatType: "reverse" }}
-        width={["100%", "70%", "60%", "60%"]}
-        margin="0 auto"
-      >
-        <Image
-          src="/404 Error-pana.svg"
-          alt="Error 404 not found Illustration"
+      <Center>
+        <Video
+          src="/laplus/sleepy.mp4"
+          muted
+          autoPlay
+          loop
+          playsInline
+          preload="none"
         />
-      </MotionBox>
-      <Text textAlign="center" fontSize="xs">
-        <ChakraLink href="https://stories.freepik.com/web" isExternal>
-          Illustration by Freepik Stories
+      </Center>
+      <Text textAlign="center" fontSize="xs" marginTop={2}>
+        <ChakraLink
+          href="https://twitter.com/LaplusDarknesss/status/1465432692636327940"
+          isExternal
+        >
+          Laplus from her Twitter
         </ChakraLink>
       </Text>
 
-      <Box marginY={4}>
-        <Heading textAlign="center">Page not Found.</Heading>
+      <Box marginY={2}>
+        <Heading textAlign="center">404: Not found</Heading>
 
         <Box textAlign="center" marginTop={4}>
-          <Text>It&apos;s Okay!</Text>
           <Link href="/" passHref>
-            <Button
-              backgroundColor={colorMode === "light" ? "gray.300" : "teal.500"}
-            >
-              Let&apos;s Head Back
+            <Button background={primary} color={onPrimary}>
+              戻る
             </Button>
           </Link>
         </Box>
