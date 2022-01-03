@@ -53,8 +53,16 @@ const MyApp = ({
     setHeight();
 
     const setScrollBarWidth = setInterval(() => {
+      const prev = document.documentElement.style
+        .getPropertyValue("--scrollbar-width")
+        .split("px")[0];
+      const prevNum = Number.parseInt(prev, 10);
       const w = window.innerWidth - document.body.clientWidth;
-      document.documentElement.style.setProperty("--scrollbar-width", `${w}px`);
+      if (Number.isNaN(prevNum) || prevNum !== w)
+        document.documentElement.style.setProperty(
+          "--scrollbar-width",
+          `${w}px`
+        );
     }, 100);
 
     return () => {
