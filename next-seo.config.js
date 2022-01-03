@@ -1,6 +1,6 @@
 /** @type {import('next-seo').DefaultSeoProps} */
 const defaultSEOConfig = {
-  title: "ラプラス・ダークネス 非公式ファンサイト",
+  title: undefined,
   titleTemplate: "%s | ラプラス・ダークネス 非公式ファンサイト",
   defaultTitle: "ラプラス・ダークネス 非公式ファンサイト",
   description:
