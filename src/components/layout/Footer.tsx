@@ -36,7 +36,8 @@ const Footer = () => {
           <Text as="span" fontSize="88%">
             （イラストやテキストなどを含むがこれに限らない）
           </Text>
-          の著作権は、正当な権利を有する第三者に帰属します。
+          の著作権は、正当な権利を有する第三者または YesMyDark Project
+          contributors に帰属します。
         </Text>
       </Flex>
     </Flex>
