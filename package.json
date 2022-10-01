@@ -15,7 +15,8 @@
     "up-latest": "yarn upgrade-interactive --latest",
     "release": "standard-version",
     "push-release": "git push --follow-tags origin main",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "commit"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^15.0.0",
+    "@commitlint/prompt-cli": "^17.1.2",
     "@types/gtag.js": "^0.0.8",
     "@types/react": "^17.0.37",
     "@types/react-transition-group": "^4.4.4",
