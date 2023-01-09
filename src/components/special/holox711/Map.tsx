@@ -1,5 +1,7 @@
 import L, { Icon, Map as MapClass } from "leaflet";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { RiFocus3Line } from "react-icons/ri";
 import {
   MapContainer,
   TileLayer,
@@ -82,11 +84,19 @@ const Markers = () => {
     [map, enabled, forceAllShow]
   );
 
+  const locateIcon = useMemo(
+    () => renderToStaticMarkup(RiFocus3Line({ size: 24 })),
+    []
+  );
+
   useEffect(() => {
     map.locate({ setView: true, maxZoom: 16 });
     const divStyle =
       'style="color: black; background-color: white; min-width: 30px; height: 30px; line-height: 30px; padding: 0 4px;"';
     const buttons = [
+      L.easyButton(`<div ${divStyle}>${locateIcon}</div>`, (_, _map) => {
+        _map.locate({ setView: true, maxZoom: _map.getZoom() });
+      }).addTo(map),
       L.easyButton({
         states: [
           {
@@ -208,7 +218,7 @@ const Markers = () => {
     return () => {
       buttons.forEach((b) => b.remove());
     };
-  }, [map]);
+  }, [map, locateIcon]);
   useEffect(() => {
     fetchAllShopEntries();
   }, [map, fetchAllShopEntries]);
