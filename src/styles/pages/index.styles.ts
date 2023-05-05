@@ -69,7 +69,7 @@ const textCommonStyles = `
   position: absolute;
   margin: 0;
   color: #fafafa;
-  font-family: "Noto Sans CJK JP";
+  font-family: "IBM Plex Sans JP";
   font-weight: 900;
   line-height: 100%;
   white-space: nowrap;
@@ -78,10 +78,10 @@ const textCommonStyles = `
 export const TextLaplusTitle = styled.p`
   ${textCommonStyles}
   font-size: 5.5vw;
-  top: 7.55vw;
+  top: 8.25vw;
   left: 7.55vw;
   // prettier-ignore
-  transform: matrix3d(1, 0.16, 0, 0.0002, -0.15, 0.9, 0, -0.0004, 0, 0, 1, 0, 0, 0, 0, 1);
+  transform: matrix3d(1, 0.182, 0, 0.00029, -0.15, 0.90, 0, -0.0004, 0, 0, 1, 0, 0, 0, 0, 1);
 `;
 
 export const TextLaplusTitleLeader = styled.span`
@@ -125,7 +125,7 @@ export const TextWebsiteTitleOuter = styled.p`
   top: 5.45vw;
   left: 7.55vw;
   // prettier-ignore
-  transform: matrix3d(1, 0.172, 0, 0.0002, -0.15, 0.9, 0, -0.0004, 0, 0, 1, 0, 0, 0, 0, 1);
+  transform: matrix3d(0.98, 0.172, 0, 0.0002, -0.15, 0.9, 0, -0.0004, 0, 0, 1, 0, 0, 0, 0, 1);
   z-index: 100;
 `;
 
