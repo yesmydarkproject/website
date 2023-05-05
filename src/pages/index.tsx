@@ -7,7 +7,7 @@ import {
 import { motion } from "framer-motion";
 import Image from "next/image";
 import NextLink from "next/link";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
 
 import standing01 from "../../public/laplus/standing01.png";
 import Footer from "components/layout/Footer";
@@ -73,6 +73,7 @@ const Home = () => {
   const { getItem } = useStorage();
   const [showWebsiteTitle, setShowWebsiteTitle] = useState(false);
   const showMobileNav = useBreakpointValue({ base: true, md: false });
+  const barBehindMenuRef = useRef<HTMLDivElement | null>(null);
 
   const canSkipInitialScreen =
     getItem("skipInitialScreen", "session") === "true";
@@ -80,6 +81,13 @@ const Home = () => {
   const registerAnimation = () => {
     setTimeout(() => {
       setShowWebsiteTitle(true);
+      setTimeout(() => {
+        // Workaround for the problem of that the style is not applied
+        if (barBehindMenuRef.current) {
+          barBehindMenuRef.current.style.clipPath =
+            "polygon(0% 75%, 100% 56%, 100% 100%, 0% 101%)";
+        }
+      }, 240); // delay 0.22s + more small delay
     }, 1200);
   };
 
@@ -150,7 +158,7 @@ const Home = () => {
               animate={showWebsiteTitle ? "visible" : "clipToLeft"}
               transition={{ duration: 0.4, ease: "circOut", delay: 0.22 }}
             >
-              <BlackBarBehindMenu />
+              <BlackBarBehindMenu ref={barBehindMenuRef} />
               <Flex
                 position="absolute"
                 bottom="1vw"
