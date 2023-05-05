@@ -12,4 +12,4 @@ updates:
       timezone: "Asia/Tokyo"
     reviewers: 
       - "MaySoMusician"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 0
