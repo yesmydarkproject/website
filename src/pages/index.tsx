@@ -7,13 +7,13 @@ import {
 import { motion } from "framer-motion";
 import Image from "next/image";
 import NextLink from "next/link";
-import { ReactElement, useEffect, useRef, useState } from "react";
+import { type ReactElement, useEffect, useRef, useState } from "react";
 
 import standing01 from "../../public/laplus/standing01.png";
 import Footer from "components/layout/Footer";
 import Header from "components/layout/Header";
 import TheInitialScreen from "components/TheInitialScreen";
-import { NavItem, navItems } from "shared/libs/menu";
+import { type NavItem, navItems } from "shared/libs/menu";
 import useStorage from "shared/libs/useStorage";
 import {
   PageContainer,

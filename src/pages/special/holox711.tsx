@@ -1,17 +1,19 @@
 import { Box, Heading, Center, Text } from "@chakra-ui/react";
-import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
+import { NextSeo } from "next-seo";
 import { useMemo } from "react";
 
 const pageTitle = "holoX セブンイレブンコラボの対象店舗を地図で見る";
 const url = "https://yesmydark.com/archives";
 const description =
   "holoXとセブンのコラボの対象店舗一覧がとんでもないことになってたので作りました。普段は総帥の非公式ファンサイトです。×××「刮目せよ！ 吾輩の名前は……ラプラス・ダークネスだ！！」 ホロライブ6期生／秘密結社holoX総帥 ラプラス・ダークネスの非公式ファンサイト。 Yes My Dark!!";
+
+const Loader = () => <p />;
 const Archives = () => {
   const Map = useMemo(
     () =>
       dynamic(() => import("../../components/special/holox711/Map"), {
-        loading: () => <p />,
+        loading: Loader,
         ssr: false,
       }),
     []

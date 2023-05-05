@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
-import { PrivateRouteInfo } from "next/dist/shared/lib/router/router";
-import { withRouter, Router } from "next/router";
-import { useState, ReactNode } from "react";
+import { type PrivateRouteInfo } from "next/dist/shared/lib/router/router";
+import { withRouter, type Router } from "next/router";
+import { useState, type ReactNode } from "react";
 import {
   Transition,
   TransitionGroup,
-  TransitionStatus,
+  type TransitionStatus,
 } from "react-transition-group";
 
 export type PageChildren = (

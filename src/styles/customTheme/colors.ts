@@ -1,4 +1,4 @@
-import { DeepPartial, Theme } from "@chakra-ui/react";
+import { type DeepPartial, type Theme } from "@chakra-ui/react";
 
 /** extend additional color here */
 const extendedColors: DeepPartial<
