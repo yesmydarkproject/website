@@ -7,11 +7,11 @@
     "group:recommended",
     "replacements:all",
     "workarounds:all",
-    ":gitSignoff",
+    ":gitSignOff",
     ":label(dependencies)",
     ":prConcurrentLimitNone",
     ":prHourlyLimitNone",
-    ":reviewer(MaySoMusician",
+    ":reviewer(MaySoMusician)",
     ":semanticCommits",
     ":semanticCommitTypeAll(build)",
     ":timezone(Asia/Tokyo)",
@@ -27,7 +27,7 @@
     },
     {
       "matchDepTypes": ["dependencies"],
-      "extends": [":semanticCommityType(fix)"]
+      "extends": [":semanticCommitType(fix)"]
     }
   ],
   "lockFileMaintenance": {
