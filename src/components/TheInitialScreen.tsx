@@ -6,7 +6,7 @@ import standing01a from "../../public/laplus/standing01a.png";
 import useStorage from "shared/libs/useStorage";
 
 import LaplusLiquidSceneChange, {
-  Handler as LaplusLiquidSceneChangeHandler,
+  type Handler as LaplusLiquidSceneChangeHandler,
 } from "./LaplusLiquidSceneChange";
 import {
   Container,

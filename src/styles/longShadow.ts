@@ -1,4 +1,4 @@
-import { RgbaColor, mixColors } from "shared/libs/color";
+import { type RgbaColor, mixColors } from "shared/libs/color";
 
 export function getShadowString(
   color1: RgbaColor,

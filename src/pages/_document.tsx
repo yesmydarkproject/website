@@ -5,7 +5,7 @@ import Document, {
   Head,
   Main,
   NextScript,
-  DocumentContext,
+  type DocumentContext,
 } from "next/document";
 import * as React from "react";
 

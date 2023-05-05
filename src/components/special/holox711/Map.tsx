@@ -1,4 +1,4 @@
-import L, { Icon, Map as MapClass } from "leaflet";
+import L, { Icon, type Map as MapClass } from "leaflet";
 import { useCallback, useEffect, useState } from "react";
 import {
   MapContainer,

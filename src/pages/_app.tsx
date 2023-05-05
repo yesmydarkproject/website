@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { ChakraProvider } from "@chakra-ui/react";
-import { EmotionCache } from "@emotion/cache";
+import { type EmotionCache } from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import type { NextPage } from "next";
-import { DefaultSeo } from "next-seo";
-import { AppProps } from "next/app";
+import { type AppProps } from "next/app";
 import Head from "next/head";
+import { DefaultSeo } from "next-seo";
 import { useEffect /* useRef, useState */ } from "react";
 import type { ReactElement, ReactNode } from "react";
 

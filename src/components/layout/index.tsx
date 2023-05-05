@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import Footer from "./Footer";
 import Header from "./Header";
