@@ -89,7 +89,7 @@ const MyApp = ({
               const { Component, pageProps } = args;
               return getLayout(
                 Component,
-                pageProps
+                pageProps ?? {}
               )(<Component {...pageProps} />);
             }
             return getLayout(

@@ -132,7 +132,11 @@ const Home = () => {
               initial="clipToLeft"
               variants={clipVariants}
               animate={showWebsiteTitle ? "visible" : "clipToLeft"}
-              transition={{ duration: 0.55, ease: "circOut", delay: 0.15 }}
+              transition={{
+                duration: 0.55,
+                ease: [0.18, 0.79, 0.4, 0.95],
+                delay: 0.3,
+              }}
             >
               <TextWebsiteTitleLine1>
                 ラプラス・ダークネス
@@ -156,7 +160,11 @@ const Home = () => {
               initial="clipToLeft"
               variants={clipVariants}
               animate={showWebsiteTitle ? "visible" : "clipToLeft"}
-              transition={{ duration: 0.4, ease: "circOut", delay: 0.22 }}
+              transition={{
+                duration: 0.4,
+                ease: [0.82, 0.05, 0.4, 0.92],
+                delay: 0.22,
+              }}
             >
               <BlackBarBehindMenu ref={barBehindMenuRef} />
               <Flex
