@@ -1,0 +1,47 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    ":dependencyDashboard",
+    ":ignoreModulesAndTests",
+    "group:monorepos",
+    "group:recommended",
+    "replacements:all",
+    "workarounds:all",
+    ":gitSignOff",
+    ":label(dependencies)",
+    ":prConcurrentLimitNone",
+    ":prHourlyLimitNone",
+    ":reviewer(MaySoMusician)",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(build)",
+    ":timezone(Asia/Tokyo)",
+    "helpers:followTypescriptRc",
+    "npm:unpublishSafe"
+  ],
+  "dependencyDashboardLabels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchDepTypes": ["dependencies"],
+      "extends": [":semanticCommitType(fix)"]
+    },
+    {
+      "matchPackageNames": ["next", "react", "@types/react"],
+      "dependencyDashboardApproval": true,
+      "separateMultipleMajor": true,
+      "major": {
+        "extends": [":semanticCommitType(feat!)"],
+        "commitMessageAction": "Upgrade"
+      }
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["after 10pm on thursday"]
+  },
+  "platformCommit": true,
+  "postUpdateOptions": ["yarnDedupeHighest"],
+  "rangeStrategy": "bump",
+  "vulnerabilityAlerts": {
+    "labels": ["dependencies", "security"]
+  }
+}
