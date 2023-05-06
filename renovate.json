@@ -26,10 +26,10 @@
     },
     {
       "matchPackageNames": ["next", "react", "@types/react"],
-      "dependencyDashboardApproval": true,
       "separateMultipleMajor": true,
       "major": {
         "extends": [":semanticCommitType(feat!)"],
+        "dependencyDashboardApproval": true,
         "commitMessageAction": "Upgrade"
       }
     }
