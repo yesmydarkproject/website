@@ -93,7 +93,7 @@ const LaplusLiquidSceneChange = forwardRef<Handler>((_, ref) => {
       tl.current = gsap.to(circle, {
         duration: 1.2,
         radius: Math.max(canvas.width / 2, canvas.height * 1.5),
-        ease: "cubic.out",
+        ease: "power3.out",
         onComplete: () => {
           completed = true;
         },
