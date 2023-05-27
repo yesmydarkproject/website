@@ -1,2 +1,6 @@
 /* Global Styling here */
 @import "/fonts/ibm-plex-sans-jp.min.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
