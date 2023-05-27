@@ -1,4 +1,3 @@
-import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 import { RgbaColor } from "shared/libs/color";
@@ -11,27 +10,6 @@ export const AboveTheFoldContainer = styled.div`
   width: 100%;
   margin-bottom: 1rem;
   overflow: hidden;
-`;
-
-const backgroundAnimation = keyframes`
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-`;
-
-export const PageContainer = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  background: linear-gradient(173deg, #4c3494 0%, #4c3b59 80%, #e2dde9 100%);
-  background-size: 150% 150%;
-  animation: ${backgroundAnimation} 26s ease infinite;
-  color: white;
 `;
 
 export const ImageStandingOuter = styled.div`

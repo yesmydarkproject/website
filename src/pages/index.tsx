@@ -7,16 +7,16 @@ import {
 import { motion } from "framer-motion";
 import Image from "next/image";
 import NextLink from "next/link";
-import { type ReactElement, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import standing01 from "../../public/laplus/standing01.png";
-import Footer from "components/layout/Footer";
-import Header from "components/layout/Header";
+import Footer from "components/layout/NormalLayout/Footer";
+import Header from "components/layout/NormalLayout/Header";
+import SuperIndexLayout from "components/layout/SuperIndexLayout";
 import TheInitialScreen from "components/TheInitialScreen";
 import { type NavItem, navItems } from "shared/libs/menu";
 import useStorage from "shared/libs/useStorage";
 import {
-  PageContainer,
   AboveTheFoldContainer,
   ImageStandingOuter,
   BlackBar1,
@@ -32,6 +32,7 @@ import {
   TextWebsiteTitleLine2Red,
   BlackBarBehindMenu,
 } from "styles/pages/index.styles";
+import { type MyNextPage } from "types/next";
 
 const MotionedTextLaplusTitle = motion(TextLaplusTitle);
 const MotionedTextWebsiteTitleOuter = motion(TextWebsiteTitleOuter);
@@ -58,7 +59,7 @@ const NavLink = ({ href, text }: Pick<NavItem, "text" | "href">) => (
   </NextLink>
 );
 
-const Home = () => {
+const Home: MyNextPage = () => {
   const clipVariants = {
     visible: {
       clipPath: "polygon(0% -50%, 100% -50%, 100% 150%, 0% 150%)",
@@ -95,113 +96,111 @@ const Home = () => {
     if (canSkipInitialScreen && !showWebsiteTitle) {
       registerAnimation();
     }
-  });
+  }, [canSkipInitialScreen, showWebsiteTitle]);
 
   return (
-    <>
-      <div className="fullHeight">
-        <style jsx>{`
-          .fullHeight {
-            min-height: 100vh;
-            min-height: calc(var(--vh, 1vh) * 100);
-          }
-        `}</style>
-        {showMobileNav && <Header />}
-        <Box as="main" paddingTop={showMobileNav ? "4rem" : undefined}>
-          <AboveTheFoldContainer>
-            <BlackBar1 />
-            <BlackBar2 />
-            <ImageStandingOuter>
-              <Image
-                src={standing01}
-                layout="responsive"
-                sizes="76vw"
-                priority
-              />
-            </ImageStandingOuter>
+    <SuperIndexLayout>
+      <>
+        <div className="fullHeight">
+          <style jsx>{`
+            .fullHeight {
+              min-height: 100vh;
+              min-height: calc(var(--vh, 1vh) * 100);
+            }
+          `}</style>
+          {showMobileNav && <Header />}
+          <Box as="main" paddingTop={showMobileNav ? "4rem" : undefined}>
+            <AboveTheFoldContainer>
+              <BlackBar1 />
+              <BlackBar2 />
+              <ImageStandingOuter>
+                <Image
+                  src={standing01}
+                  layout="responsive"
+                  sizes="76vw"
+                  priority
+                />
+              </ImageStandingOuter>
 
-            <MotionedTextLaplusTitle
-              initial="visible"
-              variants={clipVariants}
-              animate={showWebsiteTitle ? "clipToRight" : "visible"}
-              transition={{ duration: 0.4, ease: "circOut" }}
-            >
-              秘密結社holoX<TextLaplusTitleLeader>総帥</TextLaplusTitleLeader>
-            </MotionedTextLaplusTitle>
-            <MotionedTextWebsiteTitleOuter
-              initial="clipToLeft"
-              variants={clipVariants}
-              animate={showWebsiteTitle ? "visible" : "clipToLeft"}
-              transition={{
-                duration: 0.55,
-                ease: [0.18, 0.79, 0.4, 0.95],
-                delay: 0.3,
-              }}
-            >
-              <TextWebsiteTitleLine1>
-                ラプラス・ダークネス
-              </TextWebsiteTitleLine1>
-              <TextWebsiteTitleLine2>
-                <TextWebsiteTitleLine2Red>非公式</TextWebsiteTitleLine2Red>
-                ファンサイト
-              </TextWebsiteTitleLine2>
-            </MotionedTextWebsiteTitleOuter>
-
-            <MotionedTextLaplusNameOuter
-              initial={{ opacity: 1 }}
-              animate={{ opacity: showWebsiteTitle ? 0.3 : 1 }}
-              transition={{ duration: 0.3, ease: "circOut", delay: 0.32 }}
-            >
-              <TextLaplusNameLine1>La+ Darknesss</TextLaplusNameLine1>
-              <TextLaplusNameLine2>ラプラス・ダークネス</TextLaplusNameLine2>
-            </MotionedTextLaplusNameOuter>
-            <motion.div
-              style={{ height: "100%", width: "100%" }}
-              initial="clipToLeft"
-              variants={clipVariants}
-              animate={showWebsiteTitle ? "visible" : "clipToLeft"}
-              transition={{
-                duration: 0.4,
-                ease: [0.82, 0.05, 0.4, 0.92],
-                delay: 0.22,
-              }}
-            >
-              <BlackBarBehindMenu ref={barBehindMenuRef} />
-              <Flex
-                position="absolute"
-                bottom="1vw"
-                left="-5vw"
-                justify="right"
-                width="100%"
-                flexWrap="wrap"
-                transform="matrix3d(0.90, -0.05, 0, -0.0002, 0, 1.05, 0, -0.0003, 0, 0, 1, 0, 0, 0, 0, 1)"
+              <MotionedTextLaplusTitle
+                initial="visible"
+                variants={clipVariants}
+                animate={showWebsiteTitle ? "clipToRight" : "visible"}
+                transition={{ duration: 0.4, ease: "circOut" }}
               >
-                {navItems.map((item) => (
-                  <Box
-                    key={item.text}
-                    margin="max(0.2rem, calc(1.35vw - 5px)) 1.8vw"
-                  >
-                    <NavLink {...item} />
-                  </Box>
-                ))}
-              </Flex>
-            </motion.div>
-          </AboveTheFoldContainer>
-        </Box>
-        <Footer />
-      </div>
-      <TheInitialScreen
-        initialShown={!canSkipInitialScreen}
-        onAnimationCompleted={() => {
-          registerAnimation();
-        }}
-      />
-    </>
-  );
-};
+                秘密結社holoX<TextLaplusTitleLeader>総帥</TextLaplusTitleLeader>
+              </MotionedTextLaplusTitle>
+              <MotionedTextWebsiteTitleOuter
+                initial="clipToLeft"
+                variants={clipVariants}
+                animate={showWebsiteTitle ? "visible" : "clipToLeft"}
+                transition={{
+                  duration: 0.55,
+                  ease: [0.18, 0.79, 0.4, 0.95],
+                  delay: 0.3,
+                }}
+              >
+                <TextWebsiteTitleLine1>
+                  ラプラス・ダークネス
+                </TextWebsiteTitleLine1>
+                <TextWebsiteTitleLine2>
+                  <TextWebsiteTitleLine2Red>非公式</TextWebsiteTitleLine2Red>
+                  ファンサイト
+                </TextWebsiteTitleLine2>
+              </MotionedTextWebsiteTitleOuter>
 
-Home.getLayout = function getLayout(page: ReactElement) {
-  return <PageContainer>{page}</PageContainer>;
+              <MotionedTextLaplusNameOuter
+                initial={{ opacity: 1 }}
+                animate={{ opacity: showWebsiteTitle ? 0.3 : 1 }}
+                transition={{ duration: 0.3, ease: "circOut", delay: 0.32 }}
+              >
+                <TextLaplusNameLine1>La+ Darknesss</TextLaplusNameLine1>
+                <TextLaplusNameLine2>ラプラス・ダークネス</TextLaplusNameLine2>
+              </MotionedTextLaplusNameOuter>
+              <motion.div
+                style={{ height: "100%", width: "100%" }}
+                initial="clipToLeft"
+                variants={clipVariants}
+                animate={showWebsiteTitle ? "visible" : "clipToLeft"}
+                transition={{
+                  duration: 0.4,
+                  ease: [0.82, 0.05, 0.4, 0.92],
+                  delay: 0.22,
+                }}
+              >
+                <BlackBarBehindMenu ref={barBehindMenuRef} />
+                <Flex
+                  position="absolute"
+                  bottom="1vw"
+                  left="-5vw"
+                  justify="right"
+                  width="100%"
+                  flexWrap="wrap"
+                  transform="matrix3d(0.90, -0.05, 0, -0.0002, 0, 1.05, 0, -0.0003, 0, 0, 1, 0, 0, 0, 0, 1)"
+                >
+                  {navItems.map((item) => (
+                    <Box
+                      key={item.text}
+                      margin="max(0.2rem, calc(1.35vw - 5px)) 1.8vw"
+                    >
+                      <NavLink {...item} />
+                    </Box>
+                  ))}
+                </Flex>
+              </motion.div>
+            </AboveTheFoldContainer>
+          </Box>
+          <Footer />
+        </div>
+        <TheInitialScreen
+          initialShown={!canSkipInitialScreen}
+          onAnimationCompleted={() => {
+            registerAnimation();
+          }}
+        />
+      </>
+    </SuperIndexLayout>
+  );
 };
 
 export default Home;
