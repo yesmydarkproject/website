@@ -25,7 +25,7 @@ const FoundationBlack = styled.div`
   left: 0;
   width: 100vw;
   background: black;
-  z-index: 0;
+  z-index: -1;
   min-height: 100vh;
   min-height: calc(var(--vh, 1vh) * 100);
 `;
@@ -185,7 +185,8 @@ const MyApp = ({
         </Head>
         <DefaultSeo {...defaultSEOConfig} />
         <GoogleAnalyticsScripts />
-        <FoundationBlack>
+        <FoundationBlack />
+        <div>
           <AnimatePresence mode="wait">
             {isSuperIndexLayout && (
               <SuperIndexLayout key="superindex">
@@ -209,7 +210,7 @@ const MyApp = ({
               <TheLaplusCross />
             </MotionedAppAnimationOverlayInner>
           </MotionedAppAnimationOverlay>
-        </FoundationBlack>
+        </div>
       </ChakraProvider>
     </CacheProvider>
   );
