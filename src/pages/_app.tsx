@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import Head from "next/head";
 import { DefaultSeo } from "next-seo";
 import { useEffect, useState, useRef, useCallback } from "react";
+import { SSRProvider, I18nProvider, useLocale } from "react-aria";
 
 import defaultSEOConfig from "../../next-seo.config";
 import NormalLayout from "components/layout/NormalLayout";
@@ -45,6 +46,16 @@ const MotionedAppAnimationOverlayInner = motion(styled.div`
 `);
 
 const MyApp = ({ Component, pageProps, router }: MyAppProps) => {
+  const { locale, direction } = useLocale();
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    if (html) {
+      html.lang = locale;
+      html.dir = direction;
+    }
+  }, [direction, locale]);
+
   useEffect(() => {
     const setHeight = () => {
       const vh = window.innerHeight * 0.01;
@@ -166,42 +177,46 @@ const MyApp = ({ Component, pageProps, router }: MyAppProps) => {
   }, [overlayAnimate, overlayScope, routingState]);
 
   return (
-    <ChakraProvider theme={customTheme}>
-      <Head>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-        />
-      </Head>
-      <DefaultSeo {...defaultSEOConfig} />
-      <GoogleAnalyticsScripts />
-      <FoundationBlack />
-      <div>
-        <AnimatePresence mode="wait">
-          {isSuperIndexLayout && (
-            <SuperIndexLayout key="superindex">
-              <Component {...pageProps} />
-            </SuperIndexLayout>
-          )}
-          {isNormalLayout && (
-            <NormalLayout key="normallayout">
-              <Component {...pageProps} />
-            </NormalLayout>
-          )}
-        </AnimatePresence>
-        <MotionedAppAnimationOverlay
-          ref={overlayScope}
-          initial={{ clipPath: "circle(0)" }}
-        >
-          <MotionedAppAnimationOverlayInner
-            ref={overlayInnerRef}
-            initial={{ scale: 0 }}
-          >
-            <TheLaplusCross />
-          </MotionedAppAnimationOverlayInner>
-        </MotionedAppAnimationOverlay>
-      </div>
-    </ChakraProvider>
+    <SSRProvider>
+      <I18nProvider>
+        <ChakraProvider theme={customTheme}>
+          <Head>
+            <meta
+              name="viewport"
+              content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+            />
+          </Head>
+          <DefaultSeo {...defaultSEOConfig} />
+          <GoogleAnalyticsScripts />
+          <FoundationBlack />
+          <div>
+            <AnimatePresence mode="wait">
+              {isSuperIndexLayout && (
+                <SuperIndexLayout key="superindex">
+                  <Component {...pageProps} />
+                </SuperIndexLayout>
+              )}
+              {isNormalLayout && (
+                <NormalLayout key="normallayout">
+                  <Component {...pageProps} />
+                </NormalLayout>
+              )}
+            </AnimatePresence>
+            <MotionedAppAnimationOverlay
+              ref={overlayScope}
+              initial={{ clipPath: "circle(0)" }}
+            >
+              <MotionedAppAnimationOverlayInner
+                ref={overlayInnerRef}
+                initial={{ scale: 0 }}
+              >
+                <TheLaplusCross />
+              </MotionedAppAnimationOverlayInner>
+            </MotionedAppAnimationOverlay>
+          </div>
+        </ChakraProvider>
+      </I18nProvider>
+    </SSRProvider>
   );
 };
 

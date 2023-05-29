@@ -4,7 +4,7 @@ const APP_NAME = "ラプラス・ダークネス 非公式ファンサイト";
 
 export default function Document() {
   return (
-    <Html lang="ja">
+    <Html lang="ja" dir="ltr">
       <Head>
         <meta name="application-name" content={APP_NAME} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
