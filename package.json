@@ -37,6 +37,7 @@
     "next-pwa": "^5.6.0",
     "next-seo": "^6.0.0",
     "react": "^18.2.0",
+    "react-aria": "^3.25.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-leaflet": "^4.2.1"
