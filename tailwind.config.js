@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "focus-ring": "#fced76",
+      },
+    },
     screens: {
       sm: "30em", // 480px
       md: "48em", // 768px

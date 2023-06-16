@@ -4,3 +4,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .focus-ring-link {
+    @apply relative;
+    &[data-focus-visible]:after {
+      @apply absolute inset-x-[-6px] inset-y-[-3px] rounded-sm border-2 border-solid border-focus-ring content-[""];
+    }
+  }
+}
