@@ -11,7 +11,7 @@
     "appbuild": "next build",
     "postappbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint --ignore-path .eslintignore_nextlint",
     "lint:fix": "eslint src --fix && yarn format",
     "type-check": "tsc --noEmit",
     "format": "prettier --write src",
