@@ -5,6 +5,11 @@ const tailwindConfig = require("../../../tailwind.config");
 
 const config = resolveConfig(tailwindConfig);
 
+/**
+ * @type {Record<"sm" | "md" | "lg" | "xl" | "2xl", string>}
+ */
+const screens = config.theme.screens;
+
 module.exports = {
-  screens: config.theme.screens,
+  screens,
 };
