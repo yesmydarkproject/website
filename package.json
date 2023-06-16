@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "author": "YesMyDark Project contributors",
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
     "dev": "next dev",
     "appbuild": "next build",
