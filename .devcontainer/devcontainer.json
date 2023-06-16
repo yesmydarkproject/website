@@ -1,7 +1,8 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
   "remoteEnv": {},
-  "postCreateCommand": "sh ./.devcontainer/post-install.sh",
+  "onCreateCommand": "sh ./.devcontainer/on-create.sh",
+  "updateContentCommand": "sh ./.devcontainer/update-content.sh",
   "customizations": {
     "vscode": {
       "extensions": [
