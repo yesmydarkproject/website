@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
@@ -37,15 +36,15 @@ const NormalLayout = ({ children }: MyLayoutProps) => {
   const pageKey = router.asPath;
   return (
     <motion.div
-      initial={{ x: 300, opacity: 0 }}
+      initial={{ x: 0, opacity: 1 }}
       animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 300, opacity: 0 }}
+      exit={{ x: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 260, damping: 20 }}
     >
       <Container>
         <Header />
         <AnimatePresence mode="popLayout" initial={false}>
-          <Box key={pageKey} as="main" paddingTop="4rem">
+          <main key={pageKey} className="pt-[4rem]">
             <motion.div
               initial={{ x: 300, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -54,7 +53,7 @@ const NormalLayout = ({ children }: MyLayoutProps) => {
             >
               {children}
             </motion.div>
-          </Box>
+          </main>
         </AnimatePresence>
         <Footer />
       </Container>
