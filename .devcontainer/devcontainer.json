@@ -1,7 +1,7 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
   "remoteEnv": {},
-  "postCreateCommand": "bash -i ./.devcontainer/post-create.sh",
+  "postCreateCommand": "sh ./.devcontainer/post-create.sh",
   "customizations": {
     "vscode": {
       "extensions": [
