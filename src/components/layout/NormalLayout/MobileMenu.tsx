@@ -66,8 +66,8 @@ const MobileMenu = ({
     enabled: show && isOpen,
   });
 
-  return show ? (
-    <>
+  return (
+    <div style={{ display: !show ? "none" : undefined }}>
       <AnimatePresence>
         {isOpen && (
           <MobileMenuOverlay
@@ -102,8 +102,8 @@ const MobileMenu = ({
           ))}
         </VStack>
       </MobileMenuContainer>
-    </>
-  ) : null;
+    </div>
+  );
 };
 
 export default MobileMenu;

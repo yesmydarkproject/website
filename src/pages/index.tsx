@@ -1,9 +1,4 @@
-import {
-  Box,
-  Link as ChakraLink,
-  Flex,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { Link as ChakraLink, useBreakpointValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -109,7 +104,7 @@ const Home: MyNextPage = () => {
             }
           `}</style>
           {showMobileNav && <Header />}
-          <Box as="main" paddingTop={showMobileNav ? "4rem" : undefined}>
+          <main className="pt-[4rem] md:pt-0">
             <AboveTheFoldContainer>
               <BlackBar1 />
               <BlackBar2 />
@@ -169,27 +164,19 @@ const Home: MyNextPage = () => {
                 }}
               >
                 <BlackBarBehindMenu ref={barBehindMenuRef} />
-                <Flex
-                  position="absolute"
-                  bottom="1vw"
-                  left="-5vw"
-                  justify="right"
-                  width="100%"
-                  flexWrap="wrap"
-                  transform="matrix3d(0.90, -0.05, 0, -0.0002, 0, 1.05, 0, -0.0003, 0, 0, 1, 0, 0, 0, 0, 1)"
-                >
+                <div className="absolute bottom-[1vw] left-[-5vw] flex w-full flex-wrap justify-end [transform:matrix3d(0.90,-0.05,0,-0.0002,0,1.05,0,-0.0003,0,0,1,0,0,0,0,1)]">
                   {navItems.map((item) => (
-                    <Box
+                    <div
                       key={item.text}
-                      margin="max(0.2rem, calc(1.35vw - 5px)) 1.8vw"
+                      className="mx-[1.8vw] my-[max(0.2rem,calc(1.35vw_-_5px))]"
                     >
                       <NavLink {...item} />
-                    </Box>
+                    </div>
                   ))}
-                </Flex>
+                </div>
               </motion.div>
             </AboveTheFoldContainer>
-          </Box>
+          </main>
           <Footer />
         </div>
         <TheInitialScreen
