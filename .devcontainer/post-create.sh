@@ -1,5 +1,5 @@
-#!/bin/sh
+#!/bin/bash -i
 
-. ${NVM_DIR}/nvm.sh && nvm use 18
+nvm use 18
 yarn config set --home enableTelemetry 0
 yarn install --pure-lockfile
