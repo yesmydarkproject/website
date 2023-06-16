@@ -2,6 +2,11 @@
   "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
   "remoteEnv": {},
   "postCreateCommand": "sh ./.devcontainer/post-create.sh",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+        "version": "18"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
