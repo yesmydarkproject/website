@@ -41,7 +41,8 @@
     "react-aria-components": "^1.0.0-alpha.4",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
-    "react-leaflet": "^4.2.1"
+    "react-leaflet": "^4.2.1",
+    "react-use": "^17.4.0"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.6.3",
