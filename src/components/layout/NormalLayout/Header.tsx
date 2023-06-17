@@ -4,11 +4,11 @@ import NextLink from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useScroll } from "react-use";
 
+import { screens } from "../../../../preval/tailwindcss";
 import YesMyLink from "components/basic/YesMyLink";
 import createBreakpoint from "shared/hooks/createBreakpoint";
 import { emToPixel } from "shared/libs/cssUnit";
 import { navItems } from "shared/libs/menu";
-import { screens } from "shared/preval/tailwindcss";
 
 import MobileMenu from "./MobileMenu";
 import WebsiteIcon from "./WebsiteIcon";
