@@ -1,0 +1,39 @@
+import { useRef } from "react";
+import { useMenu, type AriaMenuProps } from "react-aria";
+import { useTreeState } from "react-stately";
+
+import { MenuItem } from "./MenuItem";
+import { MenuSection } from "./MenuSection";
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface MenuProps<T> extends AriaMenuProps<T> {}
+
+export function Menu<T extends object>(props: MenuProps<T>) {
+  // Create menu state based on the incoming props
+  const state = useTreeState(props);
+
+  // Get props for the menu element
+  const ref = useRef(null);
+  const { menuProps } = useMenu(props, state, ref);
+
+  return (
+    <ul
+      {...menuProps}
+      ref={ref}
+      style={{
+        margin: 0,
+        padding: 0,
+        listStyle: "none",
+        width: 150,
+      }}
+    >
+      {Array.from(state.collection).map((item) =>
+        item.type === "section" ? (
+          <MenuSection key={item.key} section={item} state={state} />
+        ) : (
+          <MenuItem key={item.key} item={item} state={state} />
+        )
+      )}
+    </ul>
+  );
+}
