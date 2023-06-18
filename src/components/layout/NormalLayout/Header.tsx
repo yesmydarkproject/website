@@ -78,7 +78,7 @@ const Header = () => {
   return (
     <>
       <div
-        className="group/header sticky top-0 z-[2000] flex h-[4rem] w-full items-center justify-between bg-transparent text-violet-100 transition-all duration-[220ms]  data-[shrink=true]:data-[mobile-nav=false]:h-[2.5rem] data-[shrink=true]:bg-[#32243e] motion-reduce:transition-none"
+        className="group/header sticky top-0 z-[2000] flex h-[4rem] w-full items-center justify-between bg-[#4c3494] text-violet-100 transition-all duration-[220ms]  data-[shrink=true]:data-[mobile-nav=false]:h-[2.5rem] data-[shrink=true]:bg-[#32243e] motion-reduce:transition-none"
         data-shrink={nonMobileHeaderShrunken}
         data-mobile-nav={showMobileNav}
       >
