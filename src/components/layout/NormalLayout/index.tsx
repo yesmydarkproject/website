@@ -2,11 +2,14 @@ import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { Item } from "react-stately";
 
 import { type MyLayoutProps } from "types/next";
 
 import Footer from "./Footer";
 import Header from "./Header";
+import { MenuButton } from "./MobileMenu2/MenuButton";
 
 const backgroundAnimation = keyframes`
   0% {
@@ -34,6 +37,11 @@ const Container = styled.div`
 const NormalLayout = ({ children }: MyLayoutProps) => {
   const router = useRouter();
   const pageKey = router.asPath;
+
+  const [mobileMenuParent, setMobileMenuParent] = useState<
+    HTMLDivElement | undefined
+  >(undefined);
+
   return (
     <motion.div
       initial={{ x: 0, opacity: 1 }}
@@ -41,8 +49,15 @@ const NormalLayout = ({ children }: MyLayoutProps) => {
       exit={{ x: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 260, damping: 20 }}
     >
-      <Container>
+      <Container
+        ref={(ref) => {
+          setMobileMenuParent(ref ?? undefined);
+        }}
+      >
         <Header />
+        <MenuButton label="Actions" portalContainer={mobileMenuParent}>
+          <Item key="aaa">aaa</Item>
+        </MenuButton>
         <AnimatePresence mode="popLayout" initial={false}>
           <main key={pageKey} className="pt-[4rem]">
             <motion.div
