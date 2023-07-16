@@ -44,10 +44,23 @@ const NormalLayout = ({ children }: MyLayoutProps) => {
 
   return (
     <motion.div
-      initial={{ x: 0, opacity: 1 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 0, opacity: 1 }}
-      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      initial="hidden"
+      animate="shown"
+      exit="hidden"
+      variants={{
+        shown: {
+          opacity: 1,
+          transition: { duration: 0.1, ease: [0.23, 0.7, 0.23, 0.9] },
+        },
+        hidden: {
+          opacity: 0.5,
+          transition: {
+            delay: 0.2,
+            duration: 0.5,
+            ease: [0.23, 0.7, 0.23, 0.9],
+          },
+        },
+      }}
     >
       <Container
         ref={(ref) => {
