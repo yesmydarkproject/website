@@ -1,12 +1,11 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { IconButton, useDisclosure } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { useScroll } from "react-use";
 
 import { screens } from "../../../../preval/tailwindcss";
 import YesMyLink from "components/basic/YesMyLink";
 import createBreakpoint from "shared/hooks/createBreakpoint";
+import useNonMobileHeaderShrunken from "shared/hooks/useNonMobileHeaderShrunken";
 import { emToPixel } from "shared/libs/cssUnit";
 import { navItems } from "shared/libs/menu";
 
@@ -24,29 +23,6 @@ const useBreakpoint = createBreakpoint({
   nonMobile: emToPixel(screens.md),
 });
 
-const ScrollRefBridge = {
-  get scrollTop() {
-    return typeof document !== "undefined"
-      ? document.documentElement.scrollTop
-      : 0;
-  },
-  get scrollLeft() {
-    return typeof document !== "undefined"
-      ? document.documentElement.scrollLeft
-      : 0;
-  },
-  get addEventListener() {
-    return typeof window !== "undefined"
-      ? window.addEventListener.bind(window)
-      : undefined;
-  },
-  get removeEventListener() {
-    return typeof window !== "undefined"
-      ? window.removeEventListener.bind(window)
-      : undefined;
-  },
-};
-
 const Header = () => {
   const {
     isOpen: isMobileNavOpen,
@@ -57,21 +33,7 @@ const Header = () => {
   const breakpoint = useBreakpoint();
   const showMobileNav = breakpoint === "mobile";
   const showNonMobileHeaderNav = breakpoint === "nonMobile";
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const scrollRef = useRef<any>(ScrollRefBridge);
-  const { y: scrollY } = useScroll(scrollRef);
-  const [nonMobileHeaderShrunken, setNonMobileHeaderShrunken] = useState(
-    scrollY > 100
-  );
-
-  useEffect(() => {
-    if (nonMobileHeaderShrunken && scrollY <= 90) {
-      setNonMobileHeaderShrunken(false);
-    } else if (/* !nonMobileHeaderShrunken && */ scrollY > 120) {
-      setNonMobileHeaderShrunken(true);
-    }
-  }, [nonMobileHeaderShrunken, scrollY]);
+  const { nonMobileHeaderShrunken } = useNonMobileHeaderShrunken();
 
   // bg-[#261A4A]
 
