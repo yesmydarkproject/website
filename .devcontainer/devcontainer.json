@@ -11,13 +11,13 @@
     "vscode": {
       "extensions": [
         "dbaeumer.vscode-eslint",
+        "mhutchie.git-graph",
         "eamodio.gitlens",
         "VisualStudioExptTeam.intellicode-api-usage-examples",
         "MS-CEINTL.vscode-language-pack-ja",
         "yzhang.markdown-all-in-one",
         "ionutvmi.path-autocomplete",
         "esbenp.prettier-vscode",
-        "mohsen1.prettify-json",
         "chrmarti.regex",
         "bradlc.vscode-tailwindcss",
         "shardulm94.trailing-spaces"
