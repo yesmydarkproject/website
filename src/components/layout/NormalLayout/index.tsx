@@ -1,13 +1,12 @@
-import { Box } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
+import Footer from "components/layout/NormalLayout/Footer";
+import Header from "components/layout/NormalLayout/Header";
 import { type MyLayoutProps } from "types/next";
-
-import Footer from "./Footer";
-import Header from "./Header";
 
 const backgroundAnimation = keyframes`
   0% {
@@ -35,26 +34,48 @@ const Container = styled.div`
 const NormalLayout = ({ children }: MyLayoutProps) => {
   const router = useRouter();
   const pageKey = router.asPath;
+
+  const [mobileMenuParent, setMobileMenuParent] = useState<
+    HTMLDivElement | undefined
+  >(undefined);
+
   return (
     <motion.div
-      initial={{ x: 300, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 300, opacity: 0 }}
-      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      initial="hidden"
+      animate="shown"
+      exit="hidden"
+      variants={{
+        shown: {
+          opacity: 1,
+          transition: { duration: 0.1, ease: [0.23, 0.7, 0.23, 0.9] },
+        },
+        hidden: {
+          opacity: 0.5,
+          transition: {
+            delay: 0.2,
+            duration: 0.5,
+            ease: [0.23, 0.7, 0.23, 0.9],
+          },
+        },
+      }}
     >
-      <Container>
-        <Header />
+      <Container
+        ref={(ref) => {
+          setMobileMenuParent(ref ?? undefined);
+        }}
+      >
+        <Header mobileMenuPortalContainer={mobileMenuParent} />
         <AnimatePresence mode="popLayout" initial={false}>
-          <Box key={pageKey} as="main" paddingTop="4rem">
+          <main key={pageKey} className="pt-[4rem]">
             <motion.div
-              initial={{ x: 300, opacity: 0 }}
+              initial={{ x: 0, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 300, opacity: 0 }}
-              transition={{ duration: 9 }}
+              exit={{ x: 0, opacity: 0 }}
+              transition={{ duration: 2 }}
             >
               {children}
             </motion.div>
-          </Box>
+          </main>
         </AnimatePresence>
         <Footer />
       </Container>

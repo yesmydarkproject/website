@@ -1,23 +1,18 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { ChakraProvider } from "@chakra-ui/react";
-import { CacheProvider } from "@emotion/react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import Head from "next/head";
 import { DefaultSeo } from "next-seo";
 import { useEffect, useState, useRef, useCallback } from "react";
+import { SSRProvider, I18nProvider, useLocale } from "react-aria";
 
 import defaultSEOConfig from "../../next-seo.config";
 import NormalLayout from "components/layout/NormalLayout";
 import SuperIndexLayout from "components/layout/SuperIndexLayout";
 import TheLaplusCross from "components/TheLaplusCross";
 import { GoogleAnalyticsScripts } from "shared/libs/gtag";
-import createEmotionCache from "styles/createEmotionCache";
-import customTheme from "styles/customTheme";
 import { type MyAppProps } from "types/next";
 import "styles/globals.css";
-
-const clientSideEmotionCache = createEmotionCache();
 
 const FoundationBlack = styled.div`
   position: fixed;
@@ -25,7 +20,7 @@ const FoundationBlack = styled.div`
   left: 0;
   width: 100vw;
   background: black;
-  z-index: 0;
+  z-index: -1;
   min-height: 100vh;
   min-height: calc(var(--vh, 1vh) * 100);
 `;
@@ -48,12 +43,20 @@ const MotionedAppAnimationOverlayInner = motion(styled.div`
   opacity: 0;
 `);
 
-const MyApp = ({
-  Component,
-  pageProps,
-  emotionCache = clientSideEmotionCache,
-  router,
-}: MyAppProps) => {
+const getLayoutKey = (path: string) =>
+  path === "/" ? "superindex" : "normalindex";
+
+const MyApp = ({ Component, pageProps, router }: MyAppProps) => {
+  const { locale, direction } = useLocale();
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    if (html) {
+      html.lang = locale;
+      html.dir = direction;
+    }
+  }, [direction, locale]);
+
   useEffect(() => {
     const setHeight = () => {
       const vh = window.innerHeight * 0.01;
@@ -85,6 +88,8 @@ const MyApp = ({
   const pageKey = router.asPath;
   const isSuperIndexLayout = pageKey === "/";
   const isNormalLayout = !isSuperIndexLayout;
+  const layoutKey = getLayoutKey(pageKey);
+
   const [routingState, setRoutingState] = useState<"STARTED" | "COMPLETED">(
     "COMPLETED"
   );
@@ -107,29 +112,45 @@ const MyApp = ({
   );
 
   useEffect(() => {
-    const start = async () => {
+    const start = async (newPath: string) => {
+      const newLayoutKey = getLayoutKey(newPath);
+      if (layoutKey === newLayoutKey) return;
+
       await waitForAnimation();
       ovarlayAnimating.current = true;
       setRoutingState("STARTED");
     };
+    router.events.on("routeChangeStart", start);
+    return () => {
+      router.events.off("routeChangeStart", start);
+    };
+  }, [layoutKey, router.events, waitForAnimation]);
+
+  useEffect(() => {
     const completed = async () => {
+      if (routingState !== "STARTED") return;
+
       await waitForAnimation();
       ovarlayAnimating.current = true;
       setRoutingState("COMPLETED");
     };
+    router.events.on("routeChangeComplete", completed);
+    return () => {
+      router.events.off("routeChangeComplete", completed);
+    };
+  }, [router.events, routingState, waitForAnimation]);
+
+  useEffect(() => {
     const error = () => {
       ovarlayAnimating.current = false;
       setRoutingState("COMPLETED");
     };
-    router.events.on("routeChangeStart", start);
-    router.events.on("routeChangeComplete", completed);
     router.events.on("routeChangeError", error);
     return () => {
-      router.events.off("routeChangeStart", start);
-      router.events.off("routeChangeComplete", completed);
       router.events.off("routeChangeError", error);
     };
-  }, [router, waitForAnimation]);
+  }, [router.events]);
+
   const [overlayScope, overlayAnimate] = useAnimate();
 
   useEffect(() => {
@@ -175,8 +196,8 @@ const MyApp = ({
   }, [overlayAnimate, overlayScope, routingState]);
 
   return (
-    <CacheProvider value={emotionCache}>
-      <ChakraProvider theme={customTheme}>
+    <SSRProvider>
+      <I18nProvider>
         <Head>
           <meta
             name="viewport"
@@ -185,7 +206,8 @@ const MyApp = ({
         </Head>
         <DefaultSeo {...defaultSEOConfig} />
         <GoogleAnalyticsScripts />
-        <FoundationBlack>
+        <FoundationBlack />
+        <div>
           <AnimatePresence mode="wait">
             {isSuperIndexLayout && (
               <SuperIndexLayout key="superindex">
@@ -209,9 +231,9 @@ const MyApp = ({
               <TheLaplusCross />
             </MotionedAppAnimationOverlayInner>
           </MotionedAppAnimationOverlay>
-        </FoundationBlack>
-      </ChakraProvider>
-    </CacheProvider>
+        </div>
+      </I18nProvider>
+    </SSRProvider>
   );
 };
 

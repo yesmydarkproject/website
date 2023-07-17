@@ -1,19 +1,17 @@
-import {
-  Box,
-  Link as ChakraLink,
-  Flex,
-  useBreakpointValue,
-} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import NextLink from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { screens } from "../../preval/tailwindcss";
 import standing01 from "../../public/laplus/standing01.png";
+import YesMyLink from "components/basic/YesMyLink";
 import Footer from "components/layout/NormalLayout/Footer";
 import Header from "components/layout/NormalLayout/Header";
 import SuperIndexLayout from "components/layout/SuperIndexLayout";
 import TheInitialScreen from "components/TheInitialScreen";
+import createBreakpoint from "shared/hooks/createBreakpoint";
+import { emToPixel } from "shared/libs/cssUnit";
 import { type NavItem, navItems } from "shared/libs/menu";
 import useStorage from "shared/libs/useStorage";
 import {
@@ -39,25 +37,17 @@ const MotionedTextWebsiteTitleOuter = motion(TextWebsiteTitleOuter);
 const MotionedTextLaplusNameOuter = motion(TextLaplusNameOuter);
 
 const NavLink = ({ href, text }: Pick<NavItem, "text" | "href">) => (
-  <NextLink href={href} passHref>
-    <ChakraLink
-      fontWeight={700}
-      fontSize="max(4vw, 1.1rem)"
-      lineHeight="100%"
-      transition="0.2s text-shadow"
-      _focus={{
-        textShadow:
-          "0 -0.03125em 0.125em rgba(168, 114, 221, 0.8), 0 -0.015625em 0.0625em rgba(168, 114, 221, 0.4)",
-      }}
-      _hover={{
-        textShadow:
-          "0 -0.03125em 0.46em rgba(168, 114, 221, 0.8), 0 -0.015625em 0.0625em rgba(168, 114, 221, 0.4)",
-      }}
-    >
+  <YesMyLink className="text-[max(4vw,1.1rem)] font-bold leading-none no-underline transition-[text-shadow] duration-200 data-[hovered]:[text-shadow:0_-0.03125em_0.46em_rgba(168,114,221,0.8),0_-0.015625em_0.0625em_rgba(168,114,221,0.4)]">
+    <NextLink href={href} legacyBehavior={false}>
       {text}
-    </ChakraLink>
-  </NextLink>
+    </NextLink>
+  </YesMyLink>
 );
+
+const useBreakpoint = createBreakpoint({
+  mobile: 0,
+  nonMobile: emToPixel(screens.md),
+});
 
 const Home: MyNextPage = () => {
   const clipVariants = {
@@ -73,7 +63,8 @@ const Home: MyNextPage = () => {
   };
   const { getItem } = useStorage();
   const [showWebsiteTitle, setShowWebsiteTitle] = useState(false);
-  const showMobileNav = useBreakpointValue({ base: true, md: false });
+  const breakpoint = useBreakpoint();
+  const showMobileNav = breakpoint === "mobile";
   const barBehindMenuRef = useRef<HTMLDivElement | null>(null);
 
   const canSkipInitialScreen =
@@ -109,7 +100,7 @@ const Home: MyNextPage = () => {
             }
           `}</style>
           {showMobileNav && <Header />}
-          <Box as="main" paddingTop={showMobileNav ? "4rem" : undefined}>
+          <main className="pt-[4rem] md:pt-0">
             <AboveTheFoldContainer>
               <BlackBar1 />
               <BlackBar2 />
@@ -169,27 +160,19 @@ const Home: MyNextPage = () => {
                 }}
               >
                 <BlackBarBehindMenu ref={barBehindMenuRef} />
-                <Flex
-                  position="absolute"
-                  bottom="1vw"
-                  left="-5vw"
-                  justify="right"
-                  width="100%"
-                  flexWrap="wrap"
-                  transform="matrix3d(0.90, -0.05, 0, -0.0002, 0, 1.05, 0, -0.0003, 0, 0, 1, 0, 0, 0, 0, 1)"
-                >
+                <div className="absolute bottom-[1vw] left-[-5vw] flex w-full flex-wrap justify-end [transform:matrix3d(0.90,-0.05,0,-0.0002,0,1.05,0,-0.0003,0,0,1,0,0,0,0,1)]">
                   {navItems.map((item) => (
-                    <Box
+                    <div
                       key={item.text}
-                      margin="max(0.2rem, calc(1.35vw - 5px)) 1.8vw"
+                      className="mx-[1.8vw] my-[max(0.2rem,calc(1.35vw_-_5px))]"
                     >
                       <NavLink {...item} />
-                    </Box>
+                    </div>
                   ))}
-                </Flex>
+                </div>
               </motion.div>
             </AboveTheFoldContainer>
-          </Box>
+          </main>
           <Footer />
         </div>
         <TheInitialScreen

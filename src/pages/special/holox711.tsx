@@ -1,4 +1,3 @@
-import { Box, Heading, Center, Text } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import { NextSeo } from "next-seo";
 import { useMemo } from "react";
@@ -30,17 +29,17 @@ const Archives = () => {
           description,
         }}
       />
-      <Center minH="30vh" placeItems="start">
-        <Box padding="2rem" textAlign="center" w="full">
-          <Heading as="h1" mb={1}>
+      <div className="flex min-h-[30vh] place-items-start justify-center">
+        <div className="w-full p-[2rem] text-center">
+          <h1 className="mb-1 text-3xl font-bold leading-snug md:text-4xl md:leading-tight">
             holoX セブンイレブンコラボ 対象店舗
-          </Heading>
-          <Text mb={2}>
+          </h1>
+          <p className="mb-2">
             近づくとピンが表示されます。広範囲表示でもピンを表示させたいときは、右の「広範囲でも読込」をONにしてください。
-          </Text>
+          </p>
           <Map />
-        </Box>
-      </Center>
+        </div>
+      </div>
     </>
   );
 };

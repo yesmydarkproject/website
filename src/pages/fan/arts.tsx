@@ -1,4 +1,3 @@
-import { Box, Heading, Center } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 
 const pageTitle = "+mate ARTS";
@@ -15,15 +14,17 @@ const FanArts = () => {
           title: pageTitle,
         }}
       />
-      <Center minH="30vh" placeItems="start">
-        <Box padding="2rem" textAlign="center">
-          <Heading as="h1">+mate Arts</Heading>
-          <Box marginTop={8}>工事中</Box>
-          <Box marginTop={8}>
+      <div className="flex min-h-[30vh] place-items-start justify-center">
+        <div className="p-[2rem] text-center">
+          <h1 className="text-3xl font-bold leading-snug md:text-4xl md:leading-tight">
+            +mate Arts
+          </h1>
+          <div className="mt-8">工事中</div>
+          <div className="mt-8">
             視聴者からのイラスト・Remixなど（実装方針未定）
-          </Box>
-        </Box>
-      </Center>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
