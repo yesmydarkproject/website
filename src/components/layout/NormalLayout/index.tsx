@@ -4,10 +4,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
+import Footer from "components/layout/NormalLayout/Footer";
+import Header from "components/layout/NormalLayout/Header";
 import { type MyLayoutProps } from "types/next";
-
-import Footer from "./Footer";
-import Header from "./Header";
 
 const backgroundAnimation = keyframes`
   0% {
