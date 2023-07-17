@@ -31,7 +31,7 @@ const Archives = () => {
       />
       <div className="flex min-h-[30vh] place-items-start justify-center">
         <div className="w-full p-[2rem] text-center">
-          <h1 className="mb-1 text-3xl leading-snug md:text-4xl md:leading-tight">
+          <h1 className="mb-1 text-3xl font-bold leading-snug md:text-4xl md:leading-tight">
             holoX セブンイレブンコラボ 対象店舗
           </h1>
           <p className="mb-2">

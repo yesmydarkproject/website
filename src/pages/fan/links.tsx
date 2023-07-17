@@ -16,7 +16,7 @@ const FanLinks = () => {
       />
       <div className="flex min-h-[30vh] place-items-start justify-center">
         <div className="p-[2rem] text-center">
-          <h1 className="text-3xl leading-snug md:text-4xl md:leading-tight">
+          <h1 className="text-3xl font-bold leading-snug md:text-4xl md:leading-tight">
             +mate links
           </h1>
           <div className="mt-8">工事中</div>
