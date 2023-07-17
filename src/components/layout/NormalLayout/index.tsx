@@ -68,10 +68,10 @@ const NormalLayout = ({ children }: MyLayoutProps) => {
         <AnimatePresence mode="popLayout" initial={false}>
           <main key={pageKey} className="pt-[4rem]">
             <motion.div
-              initial={{ x: 300, opacity: 0 }}
+              initial={{ x: 0, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 300, opacity: 0 }}
-              transition={{ duration: 9 }}
+              exit={{ x: 0, opacity: 0 }}
+              transition={{ duration: 2 }}
             >
               {children}
             </motion.div>
