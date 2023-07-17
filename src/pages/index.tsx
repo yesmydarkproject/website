@@ -100,7 +100,7 @@ const Home: MyNextPage = () => {
             }
           `}</style>
           {showMobileNav && <Header />}
-          <main className="pt-[4rem] md:pt-0">
+          <main>
             <AboveTheFoldContainer>
               <BlackBar1 />
               <BlackBar2 />
