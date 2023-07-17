@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { ChakraProvider } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import Head from "next/head";
@@ -12,7 +11,6 @@ import NormalLayout from "components/layout/NormalLayout";
 import SuperIndexLayout from "components/layout/SuperIndexLayout";
 import TheLaplusCross from "components/TheLaplusCross";
 import { GoogleAnalyticsScripts } from "shared/libs/gtag";
-import customTheme from "styles/customTheme";
 import { type MyAppProps } from "types/next";
 import "styles/globals.css";
 
@@ -200,42 +198,40 @@ const MyApp = ({ Component, pageProps, router }: MyAppProps) => {
   return (
     <SSRProvider>
       <I18nProvider>
-        <ChakraProvider theme={customTheme}>
-          <Head>
-            <meta
-              name="viewport"
-              content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-            />
-          </Head>
-          <DefaultSeo {...defaultSEOConfig} />
-          <GoogleAnalyticsScripts />
-          <FoundationBlack />
-          <div>
-            <AnimatePresence mode="wait">
-              {isSuperIndexLayout && (
-                <SuperIndexLayout key="superindex">
-                  <Component {...pageProps} />
-                </SuperIndexLayout>
-              )}
-              {isNormalLayout && (
-                <NormalLayout key="normallayout">
-                  <Component {...pageProps} />
-                </NormalLayout>
-              )}
-            </AnimatePresence>
-            <MotionedAppAnimationOverlay
-              ref={overlayScope}
-              initial={{ clipPath: "circle(0)" }}
+        <Head>
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+          />
+        </Head>
+        <DefaultSeo {...defaultSEOConfig} />
+        <GoogleAnalyticsScripts />
+        <FoundationBlack />
+        <div>
+          <AnimatePresence mode="wait">
+            {isSuperIndexLayout && (
+              <SuperIndexLayout key="superindex">
+                <Component {...pageProps} />
+              </SuperIndexLayout>
+            )}
+            {isNormalLayout && (
+              <NormalLayout key="normallayout">
+                <Component {...pageProps} />
+              </NormalLayout>
+            )}
+          </AnimatePresence>
+          <MotionedAppAnimationOverlay
+            ref={overlayScope}
+            initial={{ clipPath: "circle(0)" }}
+          >
+            <MotionedAppAnimationOverlayInner
+              ref={overlayInnerRef}
+              initial={{ scale: 0 }}
             >
-              <MotionedAppAnimationOverlayInner
-                ref={overlayInnerRef}
-                initial={{ scale: 0 }}
-              >
-                <TheLaplusCross />
-              </MotionedAppAnimationOverlayInner>
-            </MotionedAppAnimationOverlay>
-          </div>
-        </ChakraProvider>
+              <TheLaplusCross />
+            </MotionedAppAnimationOverlayInner>
+          </MotionedAppAnimationOverlay>
+        </div>
       </I18nProvider>
     </SSRProvider>
   );

@@ -14,6 +14,9 @@ module.exports = {
       xl: "80em", // 1280px
       "2xl": "96em", // 1536px
     },
+    fontFamily: {
+      sans: [`"IBM Plex Sans JP"`, `sans-serif`],
+    },
   },
   plugins: [],
 };
