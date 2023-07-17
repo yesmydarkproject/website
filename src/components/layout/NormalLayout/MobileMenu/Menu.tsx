@@ -2,8 +2,8 @@ import { useRef } from "react";
 import { useMenu, type AriaMenuProps } from "react-aria";
 import { useTreeState } from "react-stately";
 
-import { MenuItem } from "./MenuItem";
-import { MenuSection } from "./MenuSection";
+import { MenuItem } from "components/layout/NormalLayout/MobileMenu/MenuItem";
+import { MenuSection } from "components/layout/NormalLayout/MobileMenu/MenuSection";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MenuProps<T> extends AriaMenuProps<T> {}

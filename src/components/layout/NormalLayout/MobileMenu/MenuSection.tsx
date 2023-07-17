@@ -1,7 +1,7 @@
 import { useMenuSection, useSeparator } from "react-aria";
 import { type Node, type TreeState } from "react-stately";
 
-import { MenuItem } from "./MenuItem";
+import { MenuItem } from "components/layout/NormalLayout/MobileMenu/MenuItem";
 
 export interface MenuSectionProps<T> {
   section: Node<T>;

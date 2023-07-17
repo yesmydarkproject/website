@@ -2,9 +2,9 @@ import { useRef } from "react";
 import { useMenuTrigger, type AriaMenuProps } from "react-aria";
 import { useMenuTriggerState, type MenuTriggerProps } from "react-stately";
 
-import { Menu } from "./Menu";
-import { Modal } from "./Modal";
-import { TriggerButton } from "./TriggerButton";
+import { Menu } from "components/layout/NormalLayout/MobileMenu/Menu";
+import { Modal } from "components/layout/NormalLayout/MobileMenu/Modal";
+import { TriggerButton } from "components/layout/NormalLayout/MobileMenu/TriggerButton";
 
 export interface MenuButtonProps<T> extends AriaMenuProps<T>, MenuTriggerProps {
   portalContainer?: Element;

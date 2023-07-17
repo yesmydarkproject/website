@@ -2,13 +2,12 @@ import NextLink from "next/link";
 
 import { screens } from "../../../../preval/tailwindcss";
 import YesMyLink from "components/basic/YesMyLink";
+import { MobileMenu } from "components/layout/NormalLayout/MobileMenu";
+import WebsiteIcon from "components/layout/NormalLayout/WebsiteIcon";
 import createBreakpoint from "shared/hooks/createBreakpoint";
 import useNonMobileHeaderShrunken from "shared/hooks/useNonMobileHeaderShrunken";
 import { emToPixel } from "shared/libs/cssUnit";
 import { navItems } from "shared/libs/menu";
-
-import { MobileMenu } from "./MobileMenu2";
-import WebsiteIcon from "./WebsiteIcon";
 
 const useBreakpoint = createBreakpoint({
   mobile: 0,

@@ -2,9 +2,8 @@ import NextLink from "next/link";
 import { Item } from "react-stately";
 
 import YesMyLink from "components/basic/YesMyLink";
+import { MenuButton } from "components/layout/NormalLayout/MobileMenu/MenuButton";
 import { navItems } from "shared/libs/menu";
-
-import { MenuButton } from "./MenuButton";
 
 export interface MobileMenuProps {
   portalContainer?: Element;
