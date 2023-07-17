@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="sticky top-[100vh] flex w-full flex-col place-content-center place-items-center px-2 pb-2 text-center text-[0.8rem] leading-[120%]">
       <p>
-        &copy;&ensp;2021&ensp;YesMyDark Project&ensp;&ndash;&ensp;
+        &copy;&ensp;2021-2023&ensp;YesMyDark Project&ensp;&ndash;&ensp;
         <YesMyLink>
           <YesMyExternalLink
             href="https://github.com/yesmydarkproject/website"
