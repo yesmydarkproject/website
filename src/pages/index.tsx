@@ -73,13 +73,19 @@ const Home: MyNextPage = () => {
   const registerAnimation = () => {
     setTimeout(() => {
       setShowWebsiteTitle(true);
-      setTimeout(() => {
-        // Workaround for the problem of that the style is not applied
-        if (barBehindMenuRef.current) {
-          barBehindMenuRef.current.style.clipPath =
-            "polygon(0% 75%, 100% 56%, 100% 100%, 0% 101%)";
-        }
-      }, 240); // delay 0.22s + more small delay
+
+      // Workaround for the problem of that the style is not applied
+      const workaround = (_path?: string) => {
+        if (!barBehindMenuRef.current) return;
+        const path =
+          typeof _path !== "undefined"
+            ? _path
+            : "polygon(0% 75%, 100% 56%, 100% 100%, 0% 101%)";
+        barBehindMenuRef.current.style.clipPath = path;
+      };
+      setTimeout(workaround, 240); // delay 0.22s + more small delay
+      setTimeout(workaround, 280); // for mobile
+      setTimeout(workaround.bind(null, ""), 400); // final attempt
     }, 1200);
   };
 
