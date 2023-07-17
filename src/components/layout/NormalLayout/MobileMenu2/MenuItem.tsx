@@ -10,30 +10,21 @@ export interface MenuItemProps<T> {
 export function MenuItem<T>({ item, state }: MenuItemProps<T>) {
   // Get props for the menu item element
   const ref = useRef(null);
-  const { menuItemProps, isFocused, isSelected, isDisabled } = useMenuItem(
+  const { menuItemProps, isFocused } = useMenuItem(
     { key: item.key },
     state,
     ref
   );
 
-  const focusedColor = isFocused ? "white" : "black";
-
   return (
     <li
       {...menuItemProps}
       ref={ref}
-      style={{
-        background: isFocused ? "gray" : "transparent",
-        color: isDisabled ? "gray" : focusedColor,
-        padding: "2px 5px",
-        outline: "none",
-        cursor: "default",
-        display: "flex",
-        justifyContent: "space-between",
-      }}
+      className="px-[1rem] py-1 text-[1.2rem] font-bold leading-[2] text-violet-100  outline-none"
+      data-focus-visible={isFocused}
     >
       {item.rendered}
-      {isSelected && <span aria-hidden="true">✅</span>}
+      {/* {isSelected && <span aria-hidden="true">✅</span>} */}
     </li>
   );
 }

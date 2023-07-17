@@ -17,23 +17,16 @@ export function Menu<T extends object>(props: MenuProps<T>) {
   const { menuProps } = useMenu(props, state, ref);
 
   return (
-    <ul
-      {...menuProps}
-      ref={ref}
-      style={{
-        margin: 0,
-        padding: 0,
-        listStyle: "none",
-        width: 150,
-      }}
-    >
-      {Array.from(state.collection).map((item) =>
-        item.type === "section" ? (
-          <MenuSection key={item.key} section={item} state={state} />
-        ) : (
-          <MenuItem key={item.key} item={item} state={state} />
-        )
-      )}
-    </ul>
+    <nav>
+      <ul {...menuProps} ref={ref} className="m-0 list-none p-0">
+        {Array.from(state.collection).map((item) =>
+          item.type === "section" ? (
+            <MenuSection key={item.key} section={item} state={state} />
+          ) : (
+            <MenuItem key={item.key} item={item} state={state} />
+          )
+        )}
+      </ul>
+    </nav>
   );
 }

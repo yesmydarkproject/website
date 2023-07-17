@@ -52,14 +52,9 @@ export function MenuSection<T>({ section, state }: MenuSectionProps<T>) {
             listStyle: "none",
           }}
         >
-          {
-            /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-            Array.from(state.collection.getChildren!(section.key)).map(
-              (node) => (
-                <MenuItem key={node.key} item={node} state={state} />
-              )
-            )
-          }
+          {Array.from(section.childNodes).map((node) => (
+            <MenuItem key={node.key} item={node} state={state} />
+          ))}
         </ul>
       </li>
     </>
