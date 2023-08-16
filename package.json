@@ -54,7 +54,7 @@
     "eslint-config-next": "^13.4.0",
     "eslint-config-sznm": "^1.1.1",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.2",
+    "lint-staged": "^13.3.0",
     "next-sitemap": "^4.0.9",
     "postcss": "^8.4.23",
     "postcss-flexbugs-fixes": "^5.0.2",
