@@ -47,7 +47,7 @@
     "@types/gtag.js": "^0.0.19",
     "@types/leaflet": "^1.9.3",
     "@types/react": "^18.2.74",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.19",
     "babel-plugin-preval": "^5.1.0",
     "commitlint": "^17.8.1",
     "eslint": "^8.57.0",
