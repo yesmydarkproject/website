@@ -22,8 +22,8 @@
     "commit": "commit"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.10.8",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "framer-motion": "^10.18.0",
     "gsap": "^3.11.5",
     "leaflet": "^1.9.3",
