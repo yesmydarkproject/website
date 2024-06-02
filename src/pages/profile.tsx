@@ -7,13 +7,17 @@ import Laplus3d01 from "../../public/laplus/3d01.png";
 const pageTitle = "La+Profile";
 const url = "https://yesmydark.com/profile";
 
-const Section1TextContainer = styled.div`
+const BackgroundedTextContainer = styled.div<{
+  transparentFrom: number;
+}>`
   background-color: rgb(46 16 101 / 0.45); // bg-violet-950/45
   transition: background-color 0.2s ease-in-out;
-  @media (min-width: 864px) {
+  @media (min-width: ${(props) => props.transparentFrom}px) {
     background-color: transparent;
   }
+`;
 
+const Section1TextContainer = styled(BackgroundedTextContainer)`
   @media (min-width: 768px) and (max-width: 1330px) {
     transform: translateY(-120px);
   }
@@ -64,7 +68,10 @@ const Profile = () => {
           {/* top: sm: ≈200px, md: 136px, 1331px: 160px */}
           {/* left: sm: 192px(40%), md: 399.36px(52%) */}
           {/* width: sm: 288px(60%), md: 364.8px(47.5%) */}
-          <Section1TextContainer className="absolute left-[calc(72vw-153.6px)] top-[200px] w-[calc(26.67vw+160px)] p-4 font-semibold sm:top-[calc((2763px-200vw)/9)] md:left-[52%] md:top-[16rem] md:w-[47.5%] ">
+          <Section1TextContainer
+            className="absolute left-[calc(72vw-153.6px)] top-[200px] w-[calc(26.67vw+160px)] p-4 font-semibold sm:top-[calc((2763px-200vw)/9)] md:left-[52%] md:top-[16rem] md:w-[47.5%] "
+            transparentFrom={864}
+          >
             <h2 className="title-font-size break-keep leading-tight">
               貴様ら、
               <wbr />
