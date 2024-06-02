@@ -30,6 +30,10 @@ are licensed with MIT License nor any other open licenses.
 
 <!-- , except for the following exceptions: -->
 
+### Laplus Image Citations
+
+- `public/laplus/3d01.png`: https://x.com/LaplusDarknesss/status/1672535008089890817
+
 ## Getting Started
 
 Run the development server:
