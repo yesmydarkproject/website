@@ -66,7 +66,7 @@ const NormalLayout = ({ children }: MyLayoutProps) => {
       >
         <Header mobileMenuPortalContainer={mobileMenuParent} />
         <AnimatePresence mode="popLayout" initial={false}>
-          <main key={pageKey} className="pt-[4rem]">
+          <main key={pageKey}>
             <motion.div
               initial={{ x: 0, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
