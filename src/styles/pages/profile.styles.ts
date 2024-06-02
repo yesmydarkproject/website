@@ -29,3 +29,21 @@ export const Section2Container = styled.div`
     hsl(253deg 71% 53%) 100%
   );
 `;
+
+export const AutoFontSizedHeading2 = styled.div`
+  /* sm: 42px, md: 60px */
+  font-size: clamp(
+    2rem /* 32px */,
+    calc((100vw / 16) + 12px),
+    3.75rem /* 60px */
+  );
+`;
+
+export const AutoFontSizedTextContainer = styled.h2`
+  /* sm: 14px, md: 18px */
+  font-size: clamp(
+    0.875rem /* 14px */,
+    calc((100vw + 528px) / 72),
+    1.125rem /* 18px */
+  );
+`;

@@ -5,6 +5,8 @@ import Laplus3d01 from "../../public/laplus/3d01.png";
 import {
   Section1TextContainer,
   Section2Container,
+  AutoFontSizedHeading2,
+  AutoFontSizedTextContainer,
 } from "styles/pages/profile.styles";
 
 const pageTitle = "La+Profile";
@@ -45,18 +47,18 @@ const Profile = () => {
             className="absolute left-[calc(72vw-153.6px)] top-[200px] w-[calc(26.67vw+160px)] p-4 font-semibold sm:top-[calc((2763px-200vw)/9)] md:left-[52%] md:top-[16rem] md:w-[47.5%] "
             transparentFrom={864}
           >
-            <h2 className="title-font-size break-keep leading-tight">
+            <AutoFontSizedHeading2 className="break-keep leading-tight">
               貴様ら、
               <wbr />
               刮目せよ！！
-            </h2>
-            <div className="body-font-size mt-[5em] leading-relaxed">
+            </AutoFontSizedHeading2>
+            <AutoFontSizedTextContainer className="mt-[5em] leading-relaxed">
               <p className="mb-[1em]">【秘密結社holoX】を設立した総帥。</p>
               <p className="mb-[1em]">
                 本来頭も良く、力も膨大だが、今は力の大半が封印されている。枷のせいで力の大半が封印されていることは本人も薄々感じているが、いつからかけられたのかよく覚えていない。
               </p>
               <p>側にいるカラスとは長い付き合い。</p>
-            </div>
+            </AutoFontSizedTextContainer>
           </Section1TextContainer>
         </div>
         <Section2Container className="relative h-[800px]">s</Section2Container>
